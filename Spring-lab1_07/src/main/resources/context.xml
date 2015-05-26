@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:util="http://www.springframework.org/schema/util"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+         http://www.springframework.org/schema/util
+         http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+		<map>
+		<entry key="pl.com.softproject.spring.model.Address">
+			<bean class="pl.com.softproject.spring.model.editors.AddressEditor"/>
+		</entry>
+		<entry key="pl.com.softproject.spring.model.Person">
+			<bean class="pl.com.softproject.spring.model.editors.PersonEditor"/>
+		</entry>
+		</map>
+		</property>
+	</bean>
+
+	<bean id="repository1"
+		class="pl.com.softproject.spring.model.repository.InMemoryRepository">
+		<property name="entriesAsList">
+			<util:list value-type="pl.com.softproject.spring.model.Entry">
+				<ref local="entry1" />
+				<ref local="entry2" />
+			</util:list>
+		</property>
+	</bean>
+
+	<bean id="repository2"
+		class="pl.com.softproject.spring.model.repository.InMemoryRepository">
+		<property name="entries">
+			<util:map>
+				<entry key="2" value-ref="entry3"></entry>
+				<entry key="3" value-ref="entry4"></entry>
+			</util:map>
+		</property>
+	</bean>
+
+
+	<bean id="entry1" class="pl.com.softproject.spring.model.Entry">
+		<property name="id" value="1" />
+		<property name="category" value="SERVICE_DELIVERER" />
+		<property name="person">
+			<value>1;Jan;Kowalski</value>
+		</property>
+		<property name="address">
+			<value>1;Stawki;2;00-193;Warszawa</value>
+		</property>
+		<property name="phone">
+			<bean class="pl.com.softproject.spring.model.Phone">
+				<property name="id" value="1" />
+				<property name="phoneNumber" value="460 00 00" />
+				<property name="areaNumber" value="22" />
+				<property name="countryNumber" value="48" />
+				<property name="type" value="PUBLIC" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="entry2" class="pl.com.softproject.spring.model.Entry">
+		<property name="id" value="2" />
+		<property name="category" value="SERVICE_DELIVERER" />
+		<property name="person">
+			<value>2;Tadeusz;Nowak</value>
+		</property>
+		<property name="address">
+			<value>2;Chłodna;51;00-334;Warszawa</value>
+		</property>
+		<property name="phone">
+			<bean class="pl.com.softproject.spring.model.Phone">
+				<property name="id" value="2" />
+				<property name="phoneNumber" value="460 86 00" />
+				<property name="areaNumber" value="22" />
+				<property name="countryNumber" value="48" />
+				<property name="type" value="PUBLIC" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="entry3" class="pl.com.softproject.spring.model.Entry">
+		<property name="id" value="3" />
+		<property name="category" value="SERVICE_DELIVERER" />
+		<property name="person">
+			<value>3;Marek;Nowicki</value>
+		</property>
+		<property name="address">
+			<value>3;Rejtana;11;55-015;Wrocław</value>
+		</property>
+		<property name="phone">
+			<bean class="pl.com.softproject.spring.model.Phone">
+				<property name="id" value="3" />
+				<property name="phoneNumber" value="719 88 00" />
+				<property name="areaNumber" value="71" />
+				<property name="countryNumber" value="48" />
+				<property name="type" value="PUBLIC" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="entry4" class="pl.com.softproject.spring.model.Entry">
+		<property name="id" value="4" />
+		<property name="category" value="SERVICE_DELIVERER" />
+		<property name="person">
+			<value>4;Andrzej;Kownacki</value>
+		</property>
+		<property name="address">
+			<value>4;Władysława IV;43;81-395;Gdynia</value>
+		</property>
+		<property name="phone">
+			<bean class="pl.com.softproject.spring.model.Phone">
+				<property name="id" value="4" />
+				<property name="phoneNumber" value="785 33 00" />
+				<property name="areaNumber" value="58" />
+				<property name="countryNumber" value="48" />
+				<property name="type" value="PUBLIC" />
+			</bean>
+		</property>
+	</bean>
+
+</beans>
