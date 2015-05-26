@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/Spring-lab1_05/Spring-lab1_05.iml" filepath="$PROJECT_DIR$/Spring-lab1_05/Spring-lab1_05.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring-lab1_06/Spring-lab1_06.iml" filepath="$PROJECT_DIR$/Spring-lab1_06/Spring-lab1_06.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring-lab1_08/Spring-lab1_08.iml" filepath="$PROJECT_DIR$/Spring-lab1_08/Spring-lab1_08.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-aspect/spring-aspect.iml" filepath="$PROJECT_DIR$/spring-aspect/spring-aspect.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-lab.iml" filepath="$PROJECT_DIR$/spring-lab.iml" />
     </modules>
   </component>

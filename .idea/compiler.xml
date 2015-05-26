@@ -86,8 +86,16 @@
         <processorPath useClasspath="true" />
         <module name="Spring-lab1_08" />
       </profile>
+      <profile default="false" name="Annotation profile for spring-aspect" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="spring-aspect" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring-aspect" target="1.7" />
       <module name="spring-lab" target="1.7" />
       <module name="Spring-lab1_00" target="1.7" />
       <module name="Spring-lab1_01" target="1.7" />

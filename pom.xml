@@ -39,6 +39,7 @@
         <module>Spring-lab1_06</module>
         <module>Spring-lab1_07</module>
         <module>Spring-lab1_08</module>
+        <module>spring-aspect</module>
   </modules>
     
     <properties>
@@ -49,5 +50,14 @@
         <spring.security.version>3.1.4.RELEASE</spring.security.version>
         <hibernate.version>4.3.5.Final</hibernate.version>
     </properties>
-    
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
 </project>
