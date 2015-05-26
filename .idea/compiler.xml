@@ -93,9 +93,18 @@
         <processorPath useClasspath="true" />
         <module name="spring-aspect" />
       </profile>
+      <profile default="false" name="Annotation profile for spring-hibernate" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="spring-hibernate" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cwiczenia" target="1.7" />
       <module name="spring-aspect" target="1.7" />
+      <module name="spring-hibernate" target="1.7" />
       <module name="spring-lab" target="1.7" />
       <module name="Spring-lab1_00" target="1.7" />
       <module name="Spring-lab1_01" target="1.7" />

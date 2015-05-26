@@ -40,7 +40,8 @@
         <module>Spring-lab1_07</module>
         <module>Spring-lab1_08</module>
         <module>spring-aspect</module>
-  </modules>
+        <module>spring-hibernate</module>
+    </modules>
     
     <properties>
         <org.springframework.version>4.1.6.RELEASE</org.springframework.version>
