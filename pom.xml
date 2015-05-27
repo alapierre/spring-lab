@@ -41,6 +41,7 @@
         <module>Spring-lab1_08</module>
         <module>spring-aspect</module>
         <module>spring-hibernate</module>
+        <module>spring-jdbc</module>
     </modules>
     
     <properties>
