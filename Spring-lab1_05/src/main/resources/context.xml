@@ -10,8 +10,19 @@
          http://www.springframework.org/schema/util
          http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-    <bean class="pl.com.softproject.spring.converter.PersonConverter"/>
+    <!--    <bean class="pl.com.softproject.spring.converter.PersonConverter"/>-->
+
+<!--    <context:component-scan base-package="pl.com.softproject.spring"/>-->
     
+    <bean id="conversionService"
+          class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="pl.com.softproject.spring.converter.PersonConverter"/>
+            </set>
+        </property>
+    </bean>
+
     <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
         <property name="customEditors">
             <map>
@@ -23,7 +34,7 @@
     </bean>
     
     <bean id="repository1"
-              class="pl.com.softproject.spring.model.repository.InMemoryRepository">
+          class="pl.com.softproject.spring.model.repository.InMemoryRepository">
         <property name="entriesAsList">
             <util:list value-type="pl.com.softproject.spring.model.Entry">
                 <ref local="entry1" />
@@ -33,7 +44,7 @@
     </bean>
 
     <bean id="repository2"
-              class="pl.com.softproject.spring.model.repository.InMemoryRepository">
+          class="pl.com.softproject.spring.model.repository.InMemoryRepository">
         <property name="entries">
             <util:map>
                 <entry key="2" value-ref="entry3"></entry>

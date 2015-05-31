@@ -13,7 +13,6 @@ import pl.com.softproject.spring.model.Person;
  *
  * @author CSI
  */
-
 public class PersonConverter implements Converter<String, Person> {
 
     @Override
