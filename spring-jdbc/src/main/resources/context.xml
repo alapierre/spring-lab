@@ -5,7 +5,8 @@
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
-
+       <context:annotation-config/>
+       <context:component-scan base-package="pl.com.softproject.spring.jdbc"/>
        <context:property-placeholder location="classpath:application.properties" />
 
        <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
@@ -18,7 +19,11 @@
 
        <jdbc:embedded-database id="dataSource" type="DERBY">
               <jdbc:script location="schema.sql"/>
-              <!--<jdbc:script location="test-data.sql"/>-->
+              <jdbc:script location="test-data.sql"/>
        </jdbc:embedded-database>
+
+       <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+           <property name="dataSource" ref="dataSource"/>
+       </bean>
 
 </beans>
