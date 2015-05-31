@@ -36,8 +36,6 @@
     <!--</bean>-->
 
     <jdbc:embedded-database id="dataSource" type="DERBY">
-        <!--<jdbc:script location="schema.sql"/>-->
-        <!--<jdbc:script location="test-data.sql"/>-->
     </jdbc:embedded-database>
 
     
@@ -48,9 +46,16 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <!--<property name="database" value="DERBY" />-->
-                <property name="generateDdl" value="true" />
+<!--                <property name="generateDdl" value="true" />-->
                 <property name="showSql" value="true"/>
             </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">create</prop> 
+                <prop key="hibernate.format_sql">true</prop>
+                <!-- <prop key="hibernate.hbm2ddl.import_files">initial_data.sql</prop> -->
+            </props>
         </property>
     </bean>
 

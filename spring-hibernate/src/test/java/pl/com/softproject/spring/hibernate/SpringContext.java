@@ -3,6 +3,7 @@ package pl.com.softproject.spring.hibernate;
  * Copyright 2015-05-26 the original author or authors.
  */
 
+import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import pl.com.softproject.spring.hibernate.dao.PersonDAO;
 import pl.com.softproject.spring.hibernate.model.Person;
 
 import javax.transaction.Transactional;
+import pl.com.softproject.spring.hibernate.dao.AddressDAO;
+import pl.com.softproject.spring.hibernate.model.Address;
 
 /**
  * @author Adrian Lapierre <adrian@softproject.com.pl>
@@ -27,6 +30,9 @@ public class SpringContext {
 
     @Autowired
     private PersonDAO personDAO;
+    
+    @Autowired
+    private AddressDAO addressDAO;
 
     @Test
     public void test() {
@@ -41,9 +47,43 @@ public class SpringContext {
         p.setName("Jan");
         p.setLastName("Kowalski");
 
+        System.out.println("id = " + p.getId());
+        
         personDAO.save(p);
+        
+        System.out.println("id = " + p.getId());
 
     }
+    
+    @Test
+    public void testFind() {
+        
+        List<Person> res = personDAO.findByLastNameIgnoreCaseLike("Kowalski");
+        
+        System.out.println(res);
+    }
+    
+    @Test
+    public void testFind2() {
+        
+        List<Person> res = personDAO.findByJPQL("Kowalski");
+        
+        System.out.println(res);
+    }
 
+    @Test
+    public void testPersonWithAddress() {
+        
+        Person p = new Person();
+        
+        p.setName("Jan");
+        p.setLastName("Kowalski");
+        
+        p.getAddresses().add(new Address("Lublin", "Racławickie 8", "00-000"));
+        
+        personDAO.save(p);
+        
+    }
+    
 
 }
