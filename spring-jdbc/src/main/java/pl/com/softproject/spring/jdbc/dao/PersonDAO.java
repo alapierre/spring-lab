@@ -17,5 +17,9 @@ public interface PersonDAO {
     Person loadById(long id);
 
     List<Person> loadAll();
+
+    long save(Person person);
+
+    void update(Person person);
     
 }

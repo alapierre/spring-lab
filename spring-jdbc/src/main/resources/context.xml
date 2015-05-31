@@ -26,4 +26,10 @@
            <property name="dataSource" ref="dataSource"/>
        </bean>
 
+       <bean id="personJdbcInsert" class="org.springframework.jdbc.core.simple.SimpleJdbcInsert">
+           <constructor-arg ref="jdbcTemplate"/>
+           <property name="tableName" value="person"/>
+           <property name="generatedKeyName" value="id"/>
+       </bean>
+
 </beans>

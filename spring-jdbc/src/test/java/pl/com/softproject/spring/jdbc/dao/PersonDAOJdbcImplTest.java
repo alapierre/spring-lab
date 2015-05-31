@@ -62,6 +62,50 @@ public class PersonDAOJdbcImplTest {
         assertThat(res.size(), is(equalTo(2)));
         
     }
+
+    /**
+     * Test of save method, of class PersonDAOJdbcImpl.
+     */
+    @Test
+    public void testSave() {
+        System.out.println("save");
+        Person person = new Person();
+        
+        person.setLastName("Nowakowski");
+        person.setName("Janusz");
+        
+        long id = personDAO.save(person);
+        
+        System.out.println("id = " + id);
+        
+        assert id == 3;
+        
+    }
+
+    /**
+     * Test of update method, of class PersonDAOJdbcImpl.
+     */
+    @Test
+    public void testUpdate() {
+        
+        System.out.println("update");
+        
+        Person person = personDAO.loadById(1L);
+        person.setName("Karol");
+        
+        personDAO.update(person);
+        
+        Person newPerson = personDAO.loadById(1L);
+        
+        assertThat(newPerson.getName(), is(equalTo("Karol")));
+        
+    }
+
+    
+
+    
+
+    
     
     
     
