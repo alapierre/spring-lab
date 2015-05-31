@@ -1,51 +1,51 @@
-
 package pl.com.softproject.spring.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+public class Person {
 
-public class Person{
+    @Value("#{1 + 3}")
+    private Long id = 0l;
 
-	private Long id = 0l;
-	
-	private String name = "Jan";
+    private String name = "Jan";
 
-	private String surname = "Kowalski";
-	
-	@Override
-	public String toString() {
-		
-		return ToStringBuilder.reflectionToString( this );
-	}
-	
-	public String getName() {
+    @Value("#{address.street}")
+    private String surname = "Kowalski";
 
-		return name;
-	}
+    @Override
+    public String toString() {
+        return "Person{" + "id=" + id + ", name=" + name + ", surname=" + surname + '}';
+    }
 
-	public String getSurname() {
+    public String getName() {
 
-		return surname;
-	}
+        return name;
+    }
 
-	public void setName( String name ) {
+    public String getSurname() {
 
-		this.name = name;
-	}
+        return surname;
+    }
 
-	public void setSurname( String surname ) {
+    public void setName(String name) {
 
-		this.surname = surname;
-	}
+        this.name = name;
+    }
 
-	public Long getId() {
-	
-		return id;
-	}
-	
-	public void setId( Long id ) {
-	
-		this.id = id;
-	}
+    public void setSurname(String surname) {
+
+        this.surname = surname;
+    }
+
+    public Long getId() {
+
+        return id;
+    }
+
+    public void setId(Long id) {
+
+        this.id = id;
+    }
 
 }

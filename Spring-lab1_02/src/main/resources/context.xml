@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns:context="http://www.springframework.org/schema/context"
-     xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
          http://www.springframework.org/schema/beans/spring-beans.xsd
          http://www.springframework.org/schema/context
          http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:annotation-config/>
+    <context:component-scan base-package="pl.com.softproject.spring.model"/>
 
-	<bean id="entry" class="pl.com.softproject.spring.model.Entry">
-		<property name="id" value="0" />
-		<property name="category" value="SERVICE_DELIVERER" />
-	</bean>
+    <bean id="entry" class="pl.com.softproject.spring.model.Entry">
+        <property name="id" value="0" />
+        <property name="category" value="SERVICE_DELIVERER" />
+                
+        <property name="person" ref="person"/>
+        <property name="address">
+            <bean class="pl.com.softproject.spring.model.Address">
+                <property name="city" value="Lublin"/>
+            </bean>
+        </property>
+                
+    </bean>
 
-	<bean id="person" class="pl.com.softproject.spring.model.Person">
-		<constructor-arg>
-			<value>0</value>
-		</constructor-arg>
-		<constructor-arg>
-			<value>Jan</value>
-		</constructor-arg>
-		<constructor-arg>
-			<value>Kowalski</value>
-		</constructor-arg>
-	</bean>
+    <bean id="person" class="pl.com.softproject.spring.model.Person">
+        <constructor-arg>
+            <value>0</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>Jan</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>Kowalski</value>
+        </constructor-arg>
+    </bean>
 
-	<bean id="address" class="pl.com.softproject.spring.model.Address">
-		<property name="id" value="0" />
-		<property name="street" value="Stawki" />
-		<property name="number" value="2" />
-		<property name="city" value="Warszawa" />
-		<property name="postalCode" value="00-193" />
-	</bean>
+    <bean id="address" class="pl.com.softproject.spring.model.Address">
+        <property name="id" value="0" />
+        <property name="street" value="Stawki" />
+        <property name="number" value="2" />
+        <property name="city" value="Warszawa" />
+        <property name="postalCode" value="00-193" />
+    </bean>
 
-	<bean id="phone" class="pl.com.softproject.spring.model.Phone">
-		<property name="id" value="0" />
-		<property name="phoneNumber" value="460 00 00" />
-		<property name="areaNumber" value="22" />
-		<property name="countryNumber" value="48" />
-		<property name="type" value="PUBLIC" />
-	</bean>
+    <bean id="phone" class="pl.com.softproject.spring.model.Phone">
+        <property name="id" value="0" />
+        <property name="phoneNumber" value="460 00 00" />
+        <property name="areaNumber" value="22" />
+        <property name="countryNumber" value="48" />
+        <property name="type" value="PUBLIC" />
+    </bean>
 </beans>

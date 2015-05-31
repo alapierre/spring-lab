@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans  xmlns="http://www.springframework.org/schema/beans"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns:context="http://www.springframework.org/schema/context"
      xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -8,7 +8,14 @@
          http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-
+         <context:annotation-config/>
+         <context:component-scan base-package="pl.com.softproject"/>
+    
+         <context:property-placeholder location="application.properties"/>
+         
+         <bean id="person" class="pl.com.softproject.spring.model.Person" >
+            <property name="name" value="${name}"/>
+         </bean>
 
 
 	<!-- Zdefiniuj bean Person -->

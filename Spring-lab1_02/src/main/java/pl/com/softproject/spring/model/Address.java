@@ -4,81 +4,72 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.stereotype.Component;
 
 @Component("address")
-public class Address{
+public class Address {
 
-	private Long id;
-	
-	private String street;
-	
-	private String number;
-	
-	private String city;
-	
-	private String postalCode;
+    private Long id;
 
-	
-	@Override
-	public String toString() {
-		
-		return ToStringBuilder.reflectionToString( this );
-	}
-	
-	public void setStreet( String street ) {
-	
-		this.street = street;
-	}
+    private String street;
 
-	
-	public void setNumber( String number ) {
-	
-		this.number = number;
-	}
+    private String number;
 
-	
-	public void setCity( String city ) {
-	
-		this.city = city;
-	}
+    private String city;
 
-	
-	public void setPostalCode( String postalCode ) {
-	
-		this.postalCode = postalCode;
-	}
+    private String postalCode;
 
-	
-	public String getStreet() {
-	
-		return street;
-	}
+    @Override
+    public String toString() {
 
-	
-	public String getNumber() {
-	
-		return number;
-	}
+        return ToStringBuilder.reflectionToString(this);
+    }
 
-	
-	public String getCity() {
-	
-		return city;
-	}
+    public void setStreet(String street) {
 
-	
-	public String getPostalCode() {
-	
-		return postalCode;
-	}
+        this.street = street;
+    }
 
-	public Long getId() {
-	
-		return id;
-	}
+    public void setNumber(String number) {
 
-	
-	public void setId( Long id ) {
-	
-		this.id = id;
-	}
-	
+        this.number = number;
+    }
+
+    public void setCity(String city) {
+
+        this.city = city;
+    }
+
+    public void setPostalCode(String postalCode) {
+
+        this.postalCode = postalCode;
+    }
+
+    public String getStreet() {
+
+        return street;
+    }
+
+    public String getNumber() {
+
+        return number;
+    }
+
+    public String getCity() {
+
+        return city;
+    }
+
+    public String getPostalCode() {
+
+        return postalCode;
+    }
+
+    public Long getId() {
+
+        return id;
+    }
+
+    public void setId(Long id) {
+
+        this.id = id;
+    }
+
 }

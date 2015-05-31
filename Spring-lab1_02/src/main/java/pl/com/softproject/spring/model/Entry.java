@@ -1,6 +1,7 @@
 package pl.com.softproject.spring.model;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class Entry {
 	
@@ -12,6 +13,7 @@ public class Entry {
 	
 	private Address address = new Address();
 	
+        @Autowired
 	private Phone phone = new Phone();
 	
 	@Override

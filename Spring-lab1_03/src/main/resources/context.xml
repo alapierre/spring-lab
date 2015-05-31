@@ -24,7 +24,13 @@
 
         <util:map id="mapa">
             <entry key="1" value-ref="entry1"/>
+            <entry key="2" value-ref="entry2"/>
         </util:map>
+        
+        <util:list id="lista">
+            <ref bean="entry3"/>
+            <ref bean="entry4"/>
+        </util:list>
 
 
 	<bean id="entry1" class="pl.com.softproject.spring.model.Entry">

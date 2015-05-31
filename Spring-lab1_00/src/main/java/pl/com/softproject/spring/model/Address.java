@@ -1,7 +1,10 @@
 package pl.com.softproject.spring.model;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Address{
 
 	private Long id = 0l;

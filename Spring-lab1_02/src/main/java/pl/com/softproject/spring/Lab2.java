@@ -9,19 +9,20 @@ import pl.com.softproject.spring.model.Person;
 import pl.com.softproject.spring.model.Phone;
 
 public class Lab2 {
-	public static void main( String args[] ) {
-		ApplicationContext factory = new ClassPathXmlApplicationContext("context.xml");
 
-		Entry entry = (Entry) factory.getBean("entry");
-		System.out.println(entry.toString());
+    public static void main(String args[]) {
+        ApplicationContext factory = new ClassPathXmlApplicationContext("context.xml");
 
-		Person person = entry.getPerson();
-		System.out.println(person.toString());
+        Entry entry = (Entry) factory.getBean("entry");
+        System.out.println(entry.toString());
 
-		Address address = entry.getAddress();
-		System.out.println(address.toString());
+        Person person = entry.getPerson();
+        System.out.println(person.toString());
 
-		Phone phone = entry.getPhone();
-		System.out.println(phone.toString());
-	}
+        Address address = entry.getAddress();
+        System.out.println(address.toString());
+
+        Phone phone = entry.getPhone();
+        System.out.println(phone.toString());
+    }
 }
