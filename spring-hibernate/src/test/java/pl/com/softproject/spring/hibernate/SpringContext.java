@@ -74,16 +74,34 @@ public class SpringContext {
     @Test
     public void testPersonWithAddress() {
         
+        createPersonWithAddress();
+        
+    }
+
+    protected void createPersonWithAddress() {
         Person p = new Person();
         
         p.setName("Jan");
         p.setLastName("Kowalski");
-        
-        p.getAddresses().add(new Address("Lublin", "Racławickie 8", "00-000"));
+
+        Address address = new Address("Lublin", "Racławickie 8", "00-000");
+        address.setPerson(p);
+        p.getAddresses().add(address);
         
         personDAO.save(p);
-        
     }
     
+    @Test
+    public void testFindAddress() {
+        
+        createPersonWithAddress();
+        
+        List<Address> res = addressDAO.findByPersonId(1L);
+        
+        System.out.println(res);
+        
+        
+        
+    }
 
 }

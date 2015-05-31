@@ -19,8 +19,7 @@ public class Person extends BaseEntity {
     private String name;
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private Set<Address> addresses = new LinkedHashSet<>();
     
     public String getName() {

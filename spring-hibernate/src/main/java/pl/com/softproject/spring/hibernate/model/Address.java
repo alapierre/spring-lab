@@ -6,6 +6,9 @@
 package pl.com.softproject.spring.hibernate.model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,6 +21,10 @@ public class Address extends BaseEntity {
     private String street;
     private String postCode;
 
+    @ManyToOne
+    @JoinColumn(name = "person_id",nullable = false)
+    private Person person;
+    
     public Address() {
     }
 
@@ -54,7 +61,13 @@ public class Address extends BaseEntity {
     public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
-    
-    
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
     
 }
