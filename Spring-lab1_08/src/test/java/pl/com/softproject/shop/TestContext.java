@@ -111,35 +111,7 @@ public class TestContext {
 
         System.out.println(categories.get(0).getName());
     }
-
-    @Test
-    public void testOrderItem() {
-
-        Order o = new Order();
-        Client c = new Client();
-        c.setName("mariusz");
-
-        o.setClient(c);
-
-        Product p = new Product();
-        p.setName("Rower Górski");
-
-        //Order o = orderDAO.findAll().next();
-        //Product o = productDAO.findAll().next();
-
-        OrderItem i = new OrderItem();
-
-        i.setProduct(p);
-        i.setPrice(new BigDecimal(12.99));
-        i.setQuantity(1);
-
-        System.out.println(i);
-
-        orderItemDAO.save(i);
-
-        System.out.println(i);
-    }
-
+    
     @Test
     public void testfindByUserLogin() {
 
