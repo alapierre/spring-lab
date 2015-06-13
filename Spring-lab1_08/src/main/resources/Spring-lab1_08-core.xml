@@ -27,7 +27,7 @@
     <!-- Placeholder config -->
     <context:property-placeholder location="classpath:system.properties" />
 
-    <jpa:repositories base-package="pl.com.softproject.spring.lab1_08.pl.com.softproject.spring.hibernate.model.dao"/>
+    <jpa:repositories base-package="pl.com.softproject.spring.lab1_08.dao"/>
     	
     <!-- Data source -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -40,7 +40,7 @@
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="pl.com.softproject.spring.spring.lab1_08.model" />
+        <property name="packagesToScan" value="pl.com.softproject.spring.hibernate.model" />
 
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
