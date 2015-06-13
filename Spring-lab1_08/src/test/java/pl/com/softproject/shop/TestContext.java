@@ -14,11 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import pl.com.softproject.spring.lab1_08.dao.AddressDAO;
-import pl.com.softproject.spring.lab1_08.dao.CategoryDAO;
-import pl.com.softproject.spring.lab1_08.dao.OrderItemDAO;
-import pl.com.softproject.spring.lab1_08.model.Category;
-import pl.com.softproject.spring.lab1_08.model.OrderItem;
+import pl.com.softproject.spring.lab1_08.dao.*;
+import pl.com.softproject.spring.lab1_08.model.*;
 
 /**
  *
@@ -38,6 +35,15 @@ public class TestContext {
     
     @Autowired
     private OrderItemDAO orderItemDAO;
+    
+    @Autowired
+    private ClientDAO clientDAO;
+    
+    @Autowired
+    private OrderDAO orderDAO;
+    
+    @Autowired
+    private ProductDAO productDAO;
     
     @Test
     public void test() {
@@ -102,9 +108,20 @@ public class TestContext {
     
     @Test
     public void testOrderItem() {
-
+        Order o = new Order();
+        Client c = new Client();
+        clientDAO.save(c);
+        o.setClient(c);
+        orderDAO.save(o);
+        Product p = new Product();
+        p.setName("Rower Górski");
+        productDAO.save(p);
+        //Order o = orderDAO.findAll().next();
+        //Product o = productDAO.findAll().next();
+        
         OrderItem i = new OrderItem();
-
+        i.setOrder(o);
+        i.setProduct(p);
         i.setPrice(new BigDecimal(12.99));
         i.setQuantity(1);
 
