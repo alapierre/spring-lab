@@ -5,21 +5,33 @@
  */
 package pl.com.softproject.spring.lab1_08.model;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author S108_8
  */
-public class Stock extends BaseEntity{
+
+@Entity
+public class Stock extends BaseEntity {
     
-//    private Product id_product;
+    @ManyToOne
+    @JoinColumn(name="product_id",nullable = false)
+    private Product product;
     private Long volume;
 
-//    public Product getId_product() {
-//        return id_product;
-//    }
+    public Product getProduct() {
+        return product;
+    }
 
     public Long getVolume() {
         return volume;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public void setVolume(Long volume) {

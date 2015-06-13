@@ -6,17 +6,25 @@
 package pl.com.softproject.spring.lab1_08.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author S108_11
  */
-
+@Entity
+@Table(name = "shipment")
 public class Shipment extends BaseEntity{
     
     private Date shipmentDate;
     private Address shipmentAddress;
     private ShipmentStatus shipmentStatus;
+    
+    @ManyToOne
+    @JoinColumn(name="order_id", nullable = false)
     private Order order;
     private ShipmentType shipmentType;
     
