@@ -117,17 +117,18 @@ public class TestContext {
 
         Order o = new Order();
         Client c = new Client();
-        clientDAO.save(c);
+        c.setName("mariusz");
+
         o.setClient(c);
-        orderDAO.save(o);
+
         Product p = new Product();
         p.setName("Rower Górski");
-        productDAO.save(p);
+
         //Order o = orderDAO.findAll().next();
         //Product o = productDAO.findAll().next();
 
         OrderItem i = new OrderItem();
-        i.setOrder(o);
+
         i.setProduct(p);
         i.setPrice(new BigDecimal(12.99));
         i.setQuantity(1);
