@@ -16,5 +16,5 @@ import pl.com.softproject.spring.lab1_08.model.Stock;
 public interface StockDAO extends CrudRepository<Stock, String>{
     
     public List<Stock> findByProductId(Long id);
-    
+    public List<Stock> findByProductName(String name);
 }
