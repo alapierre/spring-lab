@@ -18,4 +18,6 @@ public interface CategoryDAO extends CrudRepository<Category, String>{
     public Category findById(Long id);
     
     public List<Category> findByParentId(Long id);
+    
+    public List<Category> findByNameIgnoreCaseLike(String name);
 }
