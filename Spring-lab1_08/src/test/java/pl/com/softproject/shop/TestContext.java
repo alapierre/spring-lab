@@ -5,6 +5,7 @@
  */
 package pl.com.softproject.shop;
 
+import java.math.BigDecimal;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.junit.Test;
@@ -15,9 +16,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import pl.com.softproject.spring.lab1_08.dao.AddressDAO;
 import pl.com.softproject.spring.lab1_08.dao.CategoryDAO;
-import pl.com.softproject.spring.lab1_08.model.Address;
+import pl.com.softproject.spring.lab1_08.dao.OrderItemDAO;
 import pl.com.softproject.spring.lab1_08.model.Category;
-import pl.com.softproject.spring.lab1_08.model.Client;
+import pl.com.softproject.spring.lab1_08.model.OrderItem;
 
 /**
  *
@@ -34,6 +35,9 @@ public class TestContext {
     
     @Autowired
     private AddressDAO addressDAO;
+    
+    @Autowired
+    private OrderItemDAO orderItemDAO;
     
     @Test
     public void test() {
@@ -55,6 +59,30 @@ public class TestContext {
     }
     
     @Test
+    public void testCategoryFindByParentId() {
+
+        Category c = new Category();
+        c.setName("Rowery");
+        System.out.println("id = " + c.getId());
+        categoryDAO.save(c);
+        System.out.println("id = " + c.getId());
+        Long parentId = c.getId();
+        
+        Category cc1 = new Category();
+        cc1.setName("Rowery górskie");
+        cc1.setParent(c);
+        categoryDAO.save(cc1);
+        
+        Category cc2 = new Category();
+        cc2.setName("Rowery szosowe");
+        cc2.setParent(c);
+        categoryDAO.save(cc2);
+        
+        List<Category> categories = categoryDAO.findByParentId(parentId);
+        System.out.println(categories);
+    }
+    
+    @Test
     public void testCategoryFind() {
 
         Category c = new Category();
@@ -70,6 +98,21 @@ public class TestContext {
         List<Category> categories = categoryDAO.findByNameIgnoreCaseLike("%rowery%");
         
         System.out.println(categories.get(0).getName());
+    }
+    
+    @Test
+    public void testOrderItem() {
+
+        OrderItem i = new OrderItem();
+
+        i.setPrice(new BigDecimal(12.99));
+        i.setQuantity(1);
+
+        System.out.println(i);
+        
+        orderItemDAO.save(i);
+        
+        System.out.println(i);
     }
     
 }
