@@ -6,26 +6,21 @@
 package pl.com.softproject.spring.lab1_08.model;
 
 import java.util.Date;
-import org.springframework.stereotype.Component;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  *
  * @author S108_11
  */
-@Component
-public class Order {
-    private Long id;
+
+public class Order extends BaseEntity {
+    
     private Date orderDate;
     private Client client;
-    private OrderLine orderPosition;
+    private Set<OrderItem> orderItems = new LinkedHashSet<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
     public Date getOrderDate() {
         return orderDate;
@@ -43,12 +38,14 @@ public class Order {
         this.client = client;
     }
 
-    public OrderLine getOrderPosition() {
-        return orderPosition;
+    public Set<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setOrderPosition(OrderLine orderPosition) {
-        this.orderPosition = orderPosition;
+    public void setOrderItems(Set<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
+
+    
     
 }

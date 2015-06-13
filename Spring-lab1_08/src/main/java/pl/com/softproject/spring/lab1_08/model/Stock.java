@@ -9,25 +9,21 @@ package pl.com.softproject.spring.lab1_08.model;
  *
  * @author S108_8
  */
-public class Stock {
+public class Stock extends BaseEntity{
     
 //    private Product id_product;
-    private Long count;
+    private Long volume;
 
 //    public Product getId_product() {
 //        return id_product;
 //    }
 
-    public Long getCount() {
-        return count;
+    public Long getVolume() {
+        return volume;
     }
 
-//    public void setId_product(Product id_product) {
-//        this.id_product = id_product;
-//    }
-
-    public void setCount(Long count) {
-        this.count = count;
+    public void setVolume(Long volume) {
+        this.volume = volume;
     }
-    
+
 }

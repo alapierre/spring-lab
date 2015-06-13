@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  *
  * @author S108_1
  */
-public class Product {
+public class Product extends BaseEntity{
     private String name;
     //private Category category;
     private BigDecimal price;

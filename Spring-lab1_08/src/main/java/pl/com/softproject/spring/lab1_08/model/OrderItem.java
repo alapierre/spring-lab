@@ -11,27 +11,17 @@ import java.math.BigDecimal;
  *
  * @author S108_13
  */
-public class OrderLine {
+public class OrderItem extends BaseEntity{
     
     //@ManyToOne
     //@JoinColumn(name="order_id")
     private Order order;
-    //@ManyToOne
-    //@JoinColumn(name="client_id")
-    private Client client;
+    
     //@ManyToOne
     //@JoinColumn(name="product_id")
     //private Product product;
     private Integer quantity;
     private BigDecimal price;
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
 
     public Order getOrder() {
         return order;

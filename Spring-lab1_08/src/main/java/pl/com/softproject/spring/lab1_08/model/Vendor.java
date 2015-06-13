@@ -9,25 +9,10 @@ package pl.com.softproject.spring.lab1_08.model;
  *
  * @author S108_8
  */
-public class Vendor {
-    
-    private Long id;
-    private String login;
-    private String password;
+public class Vendor extends BaseEntity {
+
     private String email;
     private String numberPhone;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 
     public String getEmail() {
         return email;
@@ -37,18 +22,6 @@ public class Vendor {
         return numberPhone;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -56,6 +29,5 @@ public class Vendor {
     public void setNumberPhone(String numberPhone) {
         this.numberPhone = numberPhone;
     }
-    
-    
+
 }

@@ -9,9 +9,9 @@ package pl.com.softproject.spring.lab1_08.model;
  *
  * @author S108_5
  */
-public class Address {
+public class Address extends BaseEntity {
     
-    public enum AddressType {
+    public static enum AddressType {
         CORRESPONDENCE, HOME
     };
     

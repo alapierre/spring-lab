@@ -9,7 +9,7 @@ package pl.com.softproject.spring.lab1_08.model;
  *
  * @author S108_5
  */
-public class Category {
+public class Category extends BaseEntity{
     
     private String name;
     private Category parent;

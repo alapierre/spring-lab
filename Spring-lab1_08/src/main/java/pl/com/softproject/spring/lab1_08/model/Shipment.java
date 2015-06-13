@@ -6,27 +6,28 @@
 package pl.com.softproject.spring.lab1_08.model;
 
 import java.util.Date;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author S108_11
  */
-@Component
-public class Shipment {
-    private Long id;
+
+public class Shipment extends BaseEntity{
+    
     private Date shipmentDate;
     private Address shipmentAddress;
-    private boolean shipmentStatus;
-    private Order orderId;
-    private enum shipmentType {COURIER, POST};
+    private ShipmentStatus shipmentStatus;
+    private Order order;
+    private ShipmentType shipmentType;
+    
+    public static enum ShipmentType {COURIER, POST};
 
-    public Long getId() {
-        return id;
+    public ShipmentType getShipmentType() {
+        return shipmentType;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setShipmentType(ShipmentType shipmentType) {
+        this.shipmentType = shipmentType;
     }
 
     public Date getShipmentDate() {
@@ -45,20 +46,20 @@ public class Shipment {
         this.shipmentAddress = shipmentAddress;
     }
 
-    public boolean isShipmentStatus() {
+    public ShipmentStatus getShipmentStatus() {
         return shipmentStatus;
     }
 
-    public void setShipmentStatus(boolean shipmentStatus) {
+    public void setShipmentStatus(ShipmentStatus shipmentStatus) {
         this.shipmentStatus = shipmentStatus;
     }
 
-    public Order getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(Order orderId) {
-        this.orderId = orderId;
-    }    
+    public void setOrder(Order order) {
+        this.order = order;
+    }
     
 }

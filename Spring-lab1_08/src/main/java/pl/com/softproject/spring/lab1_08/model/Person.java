@@ -7,7 +7,7 @@ package pl.com.softproject.spring.lab1_08.model;
  *
  * @author Adrian Lapierre <adrian@soft-project.pl>
  */
-public class Person {
+public class Person extends BaseEntity{
     
     private String name;
     private String lastName;

@@ -1,6 +1,6 @@
 package pl.com.softproject.spring.lab1_08.model;
 
-public class Client {
+public class Client extends BaseEntity {
     
     private String name;
     private String lastName;
