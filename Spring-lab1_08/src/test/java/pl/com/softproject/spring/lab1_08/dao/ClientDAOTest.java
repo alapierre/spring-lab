@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import pl.com.softproject.spring.lab1_08.model.Address;
+import pl.com.softproject.spring.lab1_08.model.Client;
 import pl.com.softproject.spring.lab1_08.model.User;
 
 /**
@@ -23,17 +25,45 @@ import pl.com.softproject.spring.lab1_08.model.User;
 @ContextConfiguration("/Spring-lab1_08-test.xml")
 @TransactionConfiguration(defaultRollback = false)
 @Transactional
-public class UserDAOTest {
+public class ClientDAOTest {
     
     @Autowired
-    private UserDAO userDAO;
+    private ClientDAO clientDAO;
+    
+    @Autowired
+    private AddressDAO addressDAO;
 
+    @Autowired
+    private UserDAO userDAO;
+    
     @Test
     public void testSomeMethod() {
         
         User user = userDAO.findOne("user");
         
-        System.out.println();
+        Client client = new Client();
+        client.setName("Kamil");
+        client.setLastName("Kunikowski");
+        client.setUser(user);
+        
+        
+        Address address = new Address();
+        address.setCity("Lublin");
+        address.setPostCode("11-111");
+        address.setStreet("super ulica");
+        address.setType(Address.AddressType.HOME);
+        address.setClient(client);
+        
+        clientDAO.save(client);
+        
+        addressDAO.save(address);
+        
+        
+       // client.setAddress(address);
+       // client = clientDAO.findOne();
+        
+        System.out.println(client.toString());
+        System.out.println(address.toString());
         
     }
     
