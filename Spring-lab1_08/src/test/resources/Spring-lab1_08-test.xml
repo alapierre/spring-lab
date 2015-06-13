@@ -30,7 +30,7 @@
     <!-- Placeholder config -->
     <context:property-placeholder location="classpath:system.properties" />
 
-    <jpa:repositories base-package="pl.com.softproject.spring.lab1_08.pl.com.softproject.spring.hibernate.model.dao"/>
+    <jpa:repositories base-package="pl.com.softproject.spring.lab1_08.dao"/>
     	
     <!-- Data source -->
     <jdbc:embedded-database id="dataSource" type="DERBY">
@@ -53,7 +53,7 @@
                 <prop key="hibernate.hbm2ddl.auto">create</prop> 
                 <prop key="hibernate.format_sql">true</prop>
                 
-                <!-- <prop key="hibernate.hbm2ddl.import_files">initial_data.sql</prop> -->
+                <prop key="hibernate.hbm2ddl.import_files">initial_data.sql</prop>
             </props>
         </property>
         

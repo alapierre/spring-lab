@@ -1,0 +1,1 @@
+insert into users (active, password, login) values (1, 'perrkdf', 'user');
