@@ -7,6 +7,7 @@ package pl.com.softproject.spring.lab1_08.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,7 +44,21 @@ public class UserController {
         return "redirect:add";
     }
     
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/{login}", method = RequestMethod.GET)
+    public ModelAndView display1(@PathVariable(value = "login") String login) {
+        
+        User user = userDAO.findOne(login);
+        
+        System.out.println(user);
+        
+        ModelAndView model = new ModelAndView("edit_user");
+        model.addObject("user", new User());
+        
+        return model;
+        
+    }
+    
+    @RequestMapping(value = "/display", method = RequestMethod.GET)
     public ModelAndView display(@RequestParam(value = "login") String login) {
         
         User user = userDAO.findOne(login);
@@ -54,6 +69,15 @@ public class UserController {
         model.addObject("user", new User());
         
         return model;
+    }
+    
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String list(Model model) {
+        
+        model.addAttribute("users", userDAO.findAll());
+        
+        return "user-list";
+        
     }
     
     
