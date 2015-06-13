@@ -5,6 +5,7 @@
  */
 package pl.com.softproject.spring.lab1_08.dao;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import pl.com.softproject.spring.lab1_08.model.Address;
 
@@ -14,4 +15,7 @@ import pl.com.softproject.spring.lab1_08.model.Address;
  */
 public interface AddressDAO extends CrudRepository<Address, String>{
     
+    public List<Address> findByClientId(Long id);
+    
+    public Address findById(Long id);
 }

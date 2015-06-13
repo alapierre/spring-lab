@@ -5,6 +5,7 @@
  */
 package pl.com.softproject.spring.lab1_08.dao;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import pl.com.softproject.spring.lab1_08.model.Category;
 
@@ -14,4 +15,7 @@ import pl.com.softproject.spring.lab1_08.model.Category;
  */
 public interface CategoryDAO extends CrudRepository<Category, String>{
     
+    public Category findById(Long id);
+    
+    public List<Category> findByParentId(Long id);
 }
