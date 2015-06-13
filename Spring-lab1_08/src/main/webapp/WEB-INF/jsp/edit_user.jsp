@@ -19,7 +19,7 @@
     <body>
         <div class="container">
             
-            <form:form commandName="customer" action="save_customer">
+            <form:form commandName="user" action="save">
                 Login:<br/> <form:errors path="login" cssClass="error"/> <br/>
                 <form:input path="login"/><br/>
                 Hasło:<br/>
