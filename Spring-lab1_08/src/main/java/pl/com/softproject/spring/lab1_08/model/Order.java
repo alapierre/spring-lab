@@ -8,16 +8,29 @@ package pl.com.softproject.spring.lab1_08.model;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author S108_11
  */
 
+@Entity
+@Table(name = "order")
 public class Order extends BaseEntity {
     
+
     private Date orderDate;
+    
+    @ManyToOne
+    @JoinColumn(name="client_id", nullable = false)
     private Client client;
+    
+    @OneToMany(mappedBy = "order")
     private Set<OrderItem> orderItems = new LinkedHashSet<>();
 
     
