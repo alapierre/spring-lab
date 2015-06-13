@@ -55,6 +55,30 @@ public class TestContext {
     }
     
     @Test
+    public void testCategoryFindByParentId() {
+
+        Category c = new Category();
+        c.setName("Rowery");
+        System.out.println("id = " + c.getId());
+        categoryDAO.save(c);
+        System.out.println("id = " + c.getId());
+        Long parentId = c.getId();
+        
+        Category cc1 = new Category();
+        cc1.setName("Rowery górskie");
+        cc1.setParent(c);
+        categoryDAO.save(cc1);
+        
+        Category cc2 = new Category();
+        cc2.setName("Rowery szosowe");
+        cc2.setParent(c);
+        categoryDAO.save(cc2);
+        
+        List<Category> categories = categoryDAO.findByParentId(parentId);
+        System.out.println(categories);
+    }
+    
+    @Test
     public void testCategoryFind() {
 
         Category c = new Category();
