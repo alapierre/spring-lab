@@ -5,9 +5,11 @@
  */
 package pl.com.softproject.spring.lab1_08.controller;
 
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,13 +39,17 @@ public class UserController {
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(User user) {
+    public String save(@Valid User user, BindingResult br) {
         
         System.out.println(user);
         
+        if(br.hasErrors()) {
+            return "edit_user";
+        }
+        
         userDAO.save(user);
         
-        return "redirect:add";
+        return "redirect:list";
     }
     
     @RequestMapping(value = "/{login}", method = RequestMethod.GET)
