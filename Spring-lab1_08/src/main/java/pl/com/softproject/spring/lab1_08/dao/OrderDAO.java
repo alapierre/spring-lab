@@ -18,4 +18,5 @@ import pl.com.softproject.spring.lab1_08.model.Order;
 public interface OrderDAO extends CrudRepository<Order, Long>{
     public List<Client> findByClientId(Long id);
     public List<Date> findByOrderDate(Date id);
+    
 }
