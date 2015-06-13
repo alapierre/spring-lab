@@ -238,7 +238,7 @@
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
             <version>10.6.2.1</version>
-            <scope>test</scope>
+<!--            <scope>test</scope>-->
         </dependency>
                                                                         
     </dependencies>

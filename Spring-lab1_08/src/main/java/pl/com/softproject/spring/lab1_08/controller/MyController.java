@@ -23,10 +23,11 @@ public class MyController {
     public ModelAndView home() {
 
         logger.debug("MyController.home()");
-
+        
         ModelAndView model = new ModelAndView("home");
+        
         model.addObject("name", "Alicja");
-
+        
         return model;
     }
 
