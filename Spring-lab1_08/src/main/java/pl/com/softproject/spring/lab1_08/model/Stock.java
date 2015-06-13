@@ -9,7 +9,7 @@ package pl.com.softproject.spring.lab1_08.model;
  *
  * @author S108_8
  */
-public class Magazine {
+public class Stock {
     
 //    private Product id_product;
     private Long count;
