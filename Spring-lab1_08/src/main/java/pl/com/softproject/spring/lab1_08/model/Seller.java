@@ -14,10 +14,10 @@ import javax.persistence.OneToOne;
  * @author S108_8
  */
 @Entity
-public class Vendor extends BaseEntity {
+public class Seller extends BaseEntity {
 
     @OneToOne
-    @JoinColumn(name="user_id",nullable = false)
+    @JoinColumn(name="login",nullable = false)
     private User user;
     private String email;
     private String numberPhone;
