@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -24,6 +25,7 @@ import javax.persistence.Table;
 public class Order extends BaseEntity {
     
 
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date orderDate;
     
     @ManyToOne
