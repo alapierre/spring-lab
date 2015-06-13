@@ -26,30 +26,24 @@ import pl.com.softproject.spring.lab1_08.model.*;
 @TransactionConfiguration(defaultRollback = false)
 @Transactional
 public class TestContext {
-    
+
     @Autowired
     private CategoryDAO categoryDAO;
-    
     @Autowired
     private AddressDAO addressDAO;
-    
     @Autowired
     private OrderItemDAO orderItemDAO;
-    
     @Autowired
     private ClientDAO clientDAO;
-    
     @Autowired
     private OrderDAO orderDAO;
-    
     @Autowired
     private ProductDAO productDAO;
-    
+
     @Test
     public void test() {
-        
     }
-    
+
     @Test
     public void testCategory() {
 
@@ -58,12 +52,12 @@ public class TestContext {
         c.setName("Rowery górskie");
 
         System.out.println("id = " + c.getId());
-        
+
         categoryDAO.save(c);
-        
+
         System.out.println("id = " + c.getId());
     }
-    
+
     @Test
     public void testCategoryFindByParentId() {
 
@@ -73,21 +67,21 @@ public class TestContext {
         categoryDAO.save(c);
         System.out.println("id = " + c.getId());
         Long parentId = c.getId();
-        
+
         Category cc1 = new Category();
         cc1.setName("Rowery górskie");
         cc1.setParent(c);
         categoryDAO.save(cc1);
-        
+
         Category cc2 = new Category();
         cc2.setName("Rowery szosowe");
         cc2.setParent(c);
         categoryDAO.save(cc2);
-        
+
         List<Category> categories = categoryDAO.findByParentId(parentId);
         System.out.println(categories);
     }
-    
+
     @Test
     public void testCategoryFind() {
 
@@ -96,40 +90,47 @@ public class TestContext {
         c.setName("Rowery górskie");
 
         System.out.println("id = " + c.getId());
-        
+
         categoryDAO.save(c);
-        
+
         System.out.println("id = " + c.getId());
-        
+
         List<Category> categories = categoryDAO.findByNameIgnoreCaseLike("%rowery%");
-        
+
         System.out.println(categories.get(0).getName());
     }
-    
+
     @Test
     public void testOrderItem() {
+
         Order o = new Order();
         Client c = new Client();
-        clientDAO.save(c);
+        c.setName("mariusz");
+
         o.setClient(c);
-        orderDAO.save(o);
+
         Product p = new Product();
         p.setName("Rower Górski");
-        productDAO.save(p);
+
         //Order o = orderDAO.findAll().next();
         //Product o = productDAO.findAll().next();
-        
+
         OrderItem i = new OrderItem();
-        i.setOrder(o);
+
         i.setProduct(p);
         i.setPrice(new BigDecimal(12.99));
         i.setQuantity(1);
 
-        System.out.println(i);
-        
+        o.addItem(i);
+
+        productDAO.save(p);
+
+        clientDAO.save(c);
+
+        orderDAO.save(o);
         orderItemDAO.save(i);
-        
-        System.out.println(i);
+
+        System.out.println(orderItemDAO.findAll());
+        System.out.println(orderDAO.findAll());
     }
-    
 }

@@ -35,7 +35,14 @@ public class Order extends BaseEntity {
     @OneToMany(mappedBy = "order")
     private Set<OrderItem> orderItems = new LinkedHashSet<>();
 
-    
+    public Order addItem(OrderItem item) {
+        
+        item.setOrder(this);
+        orderItems.add(item);
+        
+        return this;
+        
+    }
 
     public Date getOrderDate() {
         return orderDate;
