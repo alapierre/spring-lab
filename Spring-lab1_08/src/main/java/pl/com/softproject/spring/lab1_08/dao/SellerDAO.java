@@ -5,6 +5,7 @@
  */
 package pl.com.softproject.spring.lab1_08.dao;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import pl.com.softproject.spring.lab1_08.model.Seller;
 
@@ -13,5 +14,9 @@ import pl.com.softproject.spring.lab1_08.model.Seller;
  * @author S108_8
  */
 public interface SellerDAO extends CrudRepository<Seller, String>{
+    
+    public List<Seller> findByUser(String user);
+    public List<Seller> findByEmail(String email);
+    public List<Seller> findByNumberPhone(String numberPhone);
     
 }
