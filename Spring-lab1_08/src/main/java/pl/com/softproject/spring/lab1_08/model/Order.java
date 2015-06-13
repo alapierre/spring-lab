@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 public class Order {
     private Long id;
     private Date orderDate;
-    private Client client;
-    private OrderPosition orderPosition;
+//    private Client client;
+//    private OrderPosition orderPosition;
 
     public Long getId() {
         return id;
