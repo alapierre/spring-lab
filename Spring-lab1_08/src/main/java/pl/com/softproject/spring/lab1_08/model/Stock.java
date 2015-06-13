@@ -5,6 +5,7 @@
  */
 package pl.com.softproject.spring.lab1_08.model;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -12,6 +13,8 @@ import javax.persistence.ManyToOne;
  *
  * @author S108_8
  */
+
+@Entity
 public class Stock extends BaseEntity {
     
     @ManyToOne
