@@ -17,7 +17,7 @@ public class Order {
     private Long id;
     private Date orderDate;
     private Client client;
-    private orderPosition;
+    private OrderPosition orderPosition;
 
     public Long getId() {
         return id;
@@ -42,6 +42,13 @@ public class Order {
     public void setClient(Client client) {
         this.client = client;
     }
-    
+
+    public OrderPosition getOrderPosition() {
+        return orderPosition;
+    }
+
+    public void setOrderPosition(OrderPosition orderPosition) {
+        this.orderPosition = orderPosition;
+    }
     
 }
