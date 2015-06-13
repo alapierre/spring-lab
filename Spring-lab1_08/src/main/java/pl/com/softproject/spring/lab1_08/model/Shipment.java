@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class Shipment {
     private Long id;
     private Date shipmentDate;
-    private Address shipmentAddress;
+//    private Address shipmentAddress;
     private boolean shipmentStatus;
     private Order orderId;
     private enum shipmentType {COURIER, POST};
@@ -37,13 +37,13 @@ public class Shipment {
         this.shipmentDate = shipmentDate;
     }
 
-    public Address getShipmentAddress() {
-        return shipmentAddress;
-    }
-
-    public void setShipmentAddress(Address shipmentAddress) {
-        this.shipmentAddress = shipmentAddress;
-    }
+//    public Address getShipmentAddress() {
+//        return shipmentAddress;
+//    }
+//
+//    public void setShipmentAddress(Address shipmentAddress) {
+//        this.shipmentAddress = shipmentAddress;
+//    }
 
     public boolean isShipmentStatus() {
         return shipmentStatus;
@@ -61,13 +61,13 @@ public class Shipment {
         this.orderId = orderId;
     }
 
-    public Enum getShipmentType() {
-        return shipmentType;
-    }
-
-    public void setShipmentType(Enum shipmentType) {
-        this.shipmentType = shipmentType;
-    }
+//    public Enum getShipmentType() {
+//        return shipmentType;
+//    }
+//
+//    public void setShipmentType(Enum shipmentType) {
+//        this.shipmentType = shipmentType;
+//    }
     
     
 }
