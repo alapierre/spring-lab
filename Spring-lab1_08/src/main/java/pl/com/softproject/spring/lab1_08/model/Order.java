@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 public class Order {
     private Long id;
     private Date orderDate;
-//    private Client client;
-//    private OrderPosition orderPosition;
+    private Client client;
+    private OrderLine orderPosition;
 
     public Long getId() {
         return id;
@@ -35,20 +35,20 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-//    public Client getClient() {
-//        return client;
-//    }
-//
-//    public void setClient(Client client) {
-//        this.client = client;
-//    }
-//
-//    public OrderPosition getOrderPosition() {
-//        return orderPosition;
-//    }
-//
-//    public void setOrderPosition(OrderPosition orderPosition) {
-//        this.orderPosition = orderPosition;
-//    }
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public OrderLine getOrderPosition() {
+        return orderPosition;
+    }
+
+    public void setOrderPosition(OrderLine orderPosition) {
+        this.orderPosition = orderPosition;
+    }
     
 }
