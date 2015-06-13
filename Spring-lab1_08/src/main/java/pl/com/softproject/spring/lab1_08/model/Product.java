@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -20,6 +21,7 @@ import javax.persistence.Table;
 @Table(name = "product")
 public class Product extends BaseEntity{
     
+    @Size(min=2)
     private String name;
     
     @ManyToOne

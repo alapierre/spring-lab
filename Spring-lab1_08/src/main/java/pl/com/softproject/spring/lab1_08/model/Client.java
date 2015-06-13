@@ -13,10 +13,10 @@ import javax.validation.constraints.Size;
 @Table(name = "client")
 public class Client extends BaseEntity {
     
-    @Size(max=64)
+    @Size(min=2, max=64)
     private String name;
     
-    @Size(max=128)
+    @Size(min=2, max=128)
     private String lastName;
     
     @OneToMany(mappedBy="adresses")
