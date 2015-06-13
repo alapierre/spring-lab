@@ -18,16 +18,16 @@ public class Seller extends BaseEntity {
 
     @OneToOne
     @JoinColumn(name="login",nullable = false)
-    private User user;
+    private User login;
     private String email;
     private String numberPhone;
 
-    public void setUser(User user) {
-        this.user = user;
+    public User getLogin() {
+        return login;
     }
 
-    public User getUser() {
-        return user;
+    public void setLogin(User login) {
+        this.login = login;
     }
 
     public String getEmail() {
