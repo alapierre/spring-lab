@@ -42,18 +42,19 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan" value="pl.com.softproject.spring.hibernate.model" />
-
+        
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <!--<property name="database" value="DERBY" />-->
                 <!--<property name="generateDdl" value="true" />-->
-                <property name="showSql" value="${showSQL}"/>
+                <property name="showSql" value="true"/>                
             </bean>
         </property>
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">create</prop> 
                 <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
                 <!-- <prop key="hibernate.hbm2ddl.import_files">initial_data.sql</prop> -->
             </props>
         </property>
