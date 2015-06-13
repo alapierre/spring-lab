@@ -5,18 +5,16 @@
  */
 package pl.com.softproject.spring.lab1_08.dao;
 
-import java.util.Date;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
-import pl.com.softproject.spring.lab1_08.model.Client;
-import pl.com.softproject.spring.lab1_08.model.Order;
+import pl.com.softproject.spring.lab1_08.model.Stock;
 
 /**
  *
- * @author S108_11
+ * @author S108_8
  */
-public interface OrderDAO extends CrudRepository<Order, Long>{
-    public List<Client> findByClientId(Long id);
-    public List<Date> findByOrderDate(Date id);
-
+public interface StockDAO extends CrudRepository<Stock, String>{
+    
+    public List<Stock> findByProductId(Long id);
+    public List<Stock> findByProductName(String name);
 }

@@ -22,12 +22,12 @@ public class Seller extends BaseEntity {
     private String email;
     private String numberPhone;
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public User getUser() {
         return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getEmail() {

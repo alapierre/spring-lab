@@ -57,5 +57,12 @@ public class Client extends BaseEntity {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" + "name=" + name + ", lastName=" + lastName + ", addresses=" + addresses + ", user=" + user + '}';
+    }
    
+    
+    
 }

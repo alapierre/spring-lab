@@ -59,11 +59,6 @@ public class OrderItem extends BaseEntity {
 
     @Override
     public String toString() {
-        return "OrderItem{"
-                + "product='" + product + '\''
-                + ", order='" + order + '\''
-                + ", quantity='" + quantity + '\''
-                + ", price='" + price + '\''
-                + '}';
+        return "OrderItem{" + "product=" + product + ", quantity=" + quantity + ", price=" + price + '}';
     }
 }

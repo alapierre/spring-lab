@@ -73,4 +73,11 @@ public class Address extends BaseEntity {
         this.type = type;
     }
 
+    @Override
+    public String toString() {
+        return "Address{" + "street=" + street + ", city=" + city + ", postCode=" + postCode + ", type=" + type  + "id=" + getId() + ", client=" + client +  '}';
+    }
+
+    
+    
 }
