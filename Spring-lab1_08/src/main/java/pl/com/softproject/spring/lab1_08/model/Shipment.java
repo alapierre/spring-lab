@@ -20,6 +20,9 @@ import javax.persistence.Table;
 public class Shipment extends BaseEntity{
     
     private Date shipmentDate;
+    
+    @ManyToOne
+    @JoinColumn(name="address_id")
     private Address shipmentAddress;
     private ShipmentStatus shipmentStatus;
     
