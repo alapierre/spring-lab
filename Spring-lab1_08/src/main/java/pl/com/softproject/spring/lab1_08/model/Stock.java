@@ -11,12 +11,12 @@ package pl.com.softproject.spring.lab1_08.model;
  */
 public class Stock extends BaseEntity{
     
-//    private Product id_product;
+    private Product id_product;
     private Long volume;
 
-//    public Product getId_product() {
-//        return id_product;
-//    }
+    public Product getId_product() {
+        return id_product;
+    }
 
     public Long getVolume() {
         return volume;
