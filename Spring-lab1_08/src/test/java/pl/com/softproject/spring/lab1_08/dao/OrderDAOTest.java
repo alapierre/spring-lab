@@ -5,6 +5,12 @@
  */
 package pl.com.softproject.spring.lab1_08.dao;
 
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import javax.transaction.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import pl.com.softproject.spring.lab1_08.model.Address;
+import pl.com.softproject.spring.lab1_08.model.Client;
 import pl.com.softproject.spring.lab1_08.model.Order;
+import pl.com.softproject.spring.lab1_08.model.OrderItem;
+import pl.com.softproject.spring.lab1_08.model.Product;
 import pl.com.softproject.spring.lab1_08.model.User;
 
 /**
@@ -26,12 +36,65 @@ import pl.com.softproject.spring.lab1_08.model.User;
 public class OrderDAOTest {
     @Autowired
     private OrderDAO orderDAO;
+    
+    @Autowired
+    private UserDAO userDAO;
+    
+    @Autowired
+    private ClientDAO clientDAO;
+    
+    @Autowired
+    private AddressDAO addressDAO;
+    
+    
 
     @Test
-    public void testSomeMethod() {
+    public void testSomeMethod() throws ParseException {
+        
+        User user = new User();
+        
+        Set<Address> a = new LinkedHashSet<>();
+        
+        Address address = new Address();
+        address.setId(1L);
+        address.setCity("Lublin");
+        address.setPostCode("20-542");
+        address.setType(Address.AddressType.HOME);
+        
+        a.add(address);
+        
+        Client client = new Client();
+        client.setId(1L);
+        client.setName("Jan");
+        client.setLastName("Kowalski");
+        client.setAddresses(a);
+        client.setUser(user);
         
         
         
+        Product product = new Product();
+        product.setId(1L);
+        product.setCategory(null);
         
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = "2013-10-10 10:49:29.10000";
+        Date newDate = format.parse(date);
+        
+        Order order = new Order();
+        
+        OrderItem items = new OrderItem();
+        items.setId(1L);
+        items.setOrder(order);
+        items.setPrice(new BigDecimal(0.35));
+        items.setProduct(product);
+        
+        order.setId(1L);
+        order.setClient(client);
+        order.setOrderDate(newDate);
+        
+        
+        orderDAO.save(order);
+        
+        System.out.println(order.getId());
     }
 }
