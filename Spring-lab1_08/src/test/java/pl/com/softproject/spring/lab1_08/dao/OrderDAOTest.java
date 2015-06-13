@@ -46,16 +46,24 @@ public class OrderDAOTest {
     @Autowired
     private AddressDAO addressDAO;
     
-    
+    @Autowired
+    private ProductDAO productDAO;
 
     @Test
     public void testSomeMethod() throws ParseException {
         
+        
         User user = userDAO.findOne("user");
+        
+        System.out.println("User: " + user);
         
         Client client = new Client();
         client.setName("Jan");
         client.setLastName("Kowalski");
+        
+        client.setUser(user);
+        
+        clientDAO.save(client);
         
         
         Set<Address> a = new LinkedHashSet<>();
@@ -64,34 +72,38 @@ public class OrderDAOTest {
         address.setCity("Lublin");
         address.setPostCode("20-542");
         address.setType(Address.AddressType.HOME);
-        address.setStreet("sds");
+        address.setStreet("Blotna");
         address.setClient(client);
         
+        addressDAO.save(address);
+        
         a.add(address);
-        
-        client.setAddresses(a);
-        client.setUser(user);
-        
-        Product product = new Product();
-        product.setCategory(null);
-        
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date = "2013-10-10 10:49:29.10000";
-        Date newDate = format.parse(date);
-        
-        Order order = new Order();
-        
-        OrderItem items = new OrderItem();
-        items.setOrder(order);
-        items.setPrice(new BigDecimal(0.35));
-        items.setProduct(product);
-        
-        order.setClient(client);
-        order.setOrderDate(newDate);
-        
-        
-        orderDAO.save(order);
-        
-        System.out.println(orderDAO.findAll());
+//        
+//        
+//        
+//        Product product = new Product();
+//        product.setCategory(null);
+//        
+//        
+//        productDAO.save(product);
+//        
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String date = "2013-10-10 10:49:29.10000";
+//        Date newDate = format.parse(date);
+//        
+//        Order order = new Order();
+//        
+//        OrderItem items = new OrderItem();
+//        items.setOrder(order);
+//        items.setPrice(new BigDecimal(0.35));
+//        items.setProduct(product);
+//        
+//        order.setClient(client);
+//        order.setOrderDate(newDate);
+//        
+//        
+//        orderDAO.save(order);
+//        
+//        System.out.println(orderDAO.findAll());
     }
 }
