@@ -5,6 +5,7 @@
  */
 package pl.com.softproject.spring.lab1_08.model;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
@@ -12,6 +13,7 @@ import javax.persistence.OneToOne;
  *
  * @author S108_8
  */
+@Entity
 public class Vendor extends BaseEntity {
 
     @OneToOne
