@@ -17,10 +17,10 @@ import javax.persistence.ManyToOne;
 public class OrderItem extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "order_id",nullable = false)
+    @JoinColumn(name = "order_id", nullable = false)
     private Order order;
     @ManyToOne
-    @JoinColumn(name = "product_id",nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
     private Integer quantity;
     private BigDecimal price;
@@ -55,5 +55,15 @@ public class OrderItem extends BaseEntity {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{"
+                + "product='" + product + '\''
+                + ", order='" + order + '\''
+                + ", quantity='" + quantity + '\''
+                + ", price='" + price + '\''
+                + '}';
     }
 }
