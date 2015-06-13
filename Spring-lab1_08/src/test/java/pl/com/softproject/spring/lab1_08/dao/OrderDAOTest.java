@@ -78,32 +78,32 @@ public class OrderDAOTest {
         addressDAO.save(address);
         
         a.add(address);
-//        
-//        
-//        
-//        Product product = new Product();
-//        product.setCategory(null);
-//        
-//        
-//        productDAO.save(product);
-//        
-//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        String date = "2013-10-10 10:49:29.10000";
-//        Date newDate = format.parse(date);
-//        
-//        Order order = new Order();
-//        
-//        OrderItem items = new OrderItem();
-//        items.setOrder(order);
-//        items.setPrice(new BigDecimal(0.35));
-//        items.setProduct(product);
-//        
-//        order.setClient(client);
-//        order.setOrderDate(newDate);
-//        
-//        
-//        orderDAO.save(order);
-//        
-//        System.out.println(orderDAO.findAll());
+        
+        
+        
+        Product product = new Product();
+        product.setCategory(null);
+        
+        
+        productDAO.save(product);
+        
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = "2013-10-10 10:49:29.10000";
+        Date newDate = format.parse(date);
+        
+        Order order = new Order();
+        
+        OrderItem items = new OrderItem();
+        items.setOrder(order);
+        items.setPrice(new BigDecimal(0.35));
+        items.setProduct(product);
+        
+        order.setClient(client);
+        order.setOrderDate(newDate);
+        
+        
+        orderDAO.save(order);
+        
+        System.out.println(orderDAO.findAll());
     }
 }

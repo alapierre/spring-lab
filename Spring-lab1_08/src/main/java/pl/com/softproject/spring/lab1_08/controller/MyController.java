@@ -16,17 +16,18 @@ import pl.com.softproject.spring.lab1_08.model.Person;
  */
 @Controller
 public class MyController {
-    
+
     protected Logger logger = Logger.getLogger(getClass());
-    
+
     @RequestMapping("/")
     public ModelAndView home() {
-        
+
         logger.debug("MyController.home()");
-        
-        return new ModelAndView("home");
+
+        ModelAndView model = new ModelAndView("home");
+        model.addObject("name", "Alicja");
+
+        return model;
     }
-    
-    
-    
+
 }
