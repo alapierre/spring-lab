@@ -39,7 +39,7 @@
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="pl.com.softproject.spring.spring.lab1_08.model" />
+        <property name="packagesToScan" value="pl.com.softproject.spring.lab1_08.model" />
 
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -52,6 +52,7 @@
             <props>
                 <prop key="hibernate.hbm2ddl.auto">create</prop> 
                 <prop key="hibernate.format_sql">true</prop>
+                
                 <!-- <prop key="hibernate.hbm2ddl.import_files">initial_data.sql</prop> -->
             </props>
         </property>
