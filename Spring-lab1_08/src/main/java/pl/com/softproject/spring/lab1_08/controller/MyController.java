@@ -24,7 +24,11 @@ public class MyController {
         
         logger.debug("MyController.home()");
         
-        return new ModelAndView("home");
+        ModelAndView model = new ModelAndView("home");
+        
+        model.addObject("name", "Alicja");
+        
+        return model;
     }
     
     

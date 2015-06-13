@@ -28,7 +28,7 @@ public class UserController {
     private UserDAO userDAO;
     
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView add(String login) {
+    public ModelAndView add() {
         
         ModelAndView model = new ModelAndView("edit_user");
         model.addObject("user", new User());
@@ -40,6 +40,8 @@ public class UserController {
     public String save(User user) {
         
         System.out.println(user);
+        
+        userDAO.save(user);
         
         return "redirect:add";
     }
@@ -59,7 +61,7 @@ public class UserController {
     }
     
     @RequestMapping(value = "/display", method = RequestMethod.GET)
-    public ModelAndView display(@RequestParam(value = "login") String login) {
+    public ModelAndView display(@RequestParam(value = "login", required = true) String login) {
         
         User user = userDAO.findOne(login);
         
