@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,7 +22,7 @@ public class Shipment extends BaseEntity{
     
     private Date shipmentDate;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="address_id")
     private Address shipmentAddress;
     private ShipmentStatus shipmentStatus;

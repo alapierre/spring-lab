@@ -19,7 +19,7 @@ public class Client extends BaseEntity {
     @Size(min=2, max=128)
     private String lastName;
     
-    @OneToMany(mappedBy="adresses")
+    @OneToMany(mappedBy="client")
     private Set<Address> addresses = new LinkedHashSet<>();
     
     @OneToOne
