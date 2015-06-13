@@ -61,6 +61,11 @@ public class Order extends BaseEntity {
         this.orderItems = orderItems;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" + "orderDate=" + orderDate + ", client=" + client + ", orderItems=" + orderItems + '}';
+    }
+
     
     
 }
