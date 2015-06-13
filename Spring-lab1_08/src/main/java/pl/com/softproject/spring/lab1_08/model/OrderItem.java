@@ -4,22 +4,24 @@
  */
 package pl.com.softproject.spring.lab1_08.model;
 
-import com.sun.security.ntlm.Client;
 import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author S108_13
  */
-public class OrderItem extends BaseEntity{
-    
-    //@ManyToOne
-    //@JoinColumn(name="order_id")
+@Entity
+public class OrderItem extends BaseEntity {
+
+    @ManyToOne
+    @JoinColumn(name = "order_id",nullable = false)
     private Order order;
-    
-    //@ManyToOne
-    //@JoinColumn(name="product_id")
-    //private Product product;
+    @ManyToOne
+    @JoinColumn(name = "product_id",nullable = false)
+    private Product product;
     private Integer quantity;
     private BigDecimal price;
 
@@ -39,13 +41,13 @@ public class OrderItem extends BaseEntity{
         this.price = price;
     }
 
-    /*public Product getProduct() {
+    public Product getProduct() {
         return product;
     }
 
     public void setProduct(Product product) {
         this.product = product;
-    }*/
+    }
 
     public Integer getQuantity() {
         return quantity;
@@ -54,5 +56,4 @@ public class OrderItem extends BaseEntity{
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-    
 }
