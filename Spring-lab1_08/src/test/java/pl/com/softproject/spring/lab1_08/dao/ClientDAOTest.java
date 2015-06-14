@@ -5,6 +5,8 @@
  */
 package pl.com.softproject.spring.lab1_08.dao;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import javax.transaction.Transactional;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -46,7 +48,6 @@ public class ClientDAOTest {
         client.setLastName("Kunikowski");
         client.setUser(user);
         
-        
         Address address = new Address();
         address.setCity("Lublin");
         address.setPostCode("11-111");
@@ -55,16 +56,10 @@ public class ClientDAOTest {
         address.setClient(client);
         
         clientDAO.save(client);
-        
         addressDAO.save(address);
         
-        
-       // client.setAddress(address);
-       // client = clientDAO.findOne();
-        
-        System.out.println(client.toString());
+        System.out.println(clientDAO.findByLastName("Kunikowski"));
         System.out.println(address.toString());
-        
     }
     
 }
