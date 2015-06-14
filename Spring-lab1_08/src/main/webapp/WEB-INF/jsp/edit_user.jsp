@@ -75,8 +75,9 @@
                                 </div>
                             </spring:bind>
                             
-                            <br/><form:button class="btn btn-default">Zapisz</form:button> 
-                                <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = 'list'"/> 
+                            <br/>
+                            <form:button class="btn btn-default">Zapisz</form:button> 
+                            <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = 'list'"/> 
                         </form:form>
                     </div>
                 </div>

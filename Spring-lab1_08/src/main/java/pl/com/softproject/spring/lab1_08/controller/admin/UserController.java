@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.com.softproject.spring.lab1_08.controller;
+package pl.com.softproject.spring.lab1_08.controller.admin;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import pl.com.softproject.spring.lab1_08.model.User;
  * @author Adrian Lapierre <adrian@soft-project.pl>
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/admin/user")
 public class UserController {
     
     @Autowired
