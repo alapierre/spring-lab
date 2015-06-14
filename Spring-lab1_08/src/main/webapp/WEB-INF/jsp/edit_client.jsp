@@ -26,12 +26,15 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Dodaj klienta</h3>
                     </div>
-                    <div class="panel-body">
-                        
+                    <div class="panel-body">                      
                         <c:url value="/admin/client/save" var="action"/>
                         
-                        <form:form commandName="client" action="${action}">
+                        <form:form commandName="custommerDto" action="${action}">
 
+                            <spring:bind path="id">
+                                <form:hidden path="id"/>
+                            </spring:bind>
+                            
                             <spring:bind path="name">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
                                     <label class="control-label" for="name">Imię</label> <form:errors path="name" cssClass="has-error"/>
@@ -69,7 +72,7 @@
                             
                             <br/>
                             <form:button class="btn btn-default">Zapisz</form:button> 
-                            <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = 'list'"/> 
+                            <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = '<c:url value="/admin/client/list"/> '"/> 
                         </form:form>
                     </div>
                 </div>
