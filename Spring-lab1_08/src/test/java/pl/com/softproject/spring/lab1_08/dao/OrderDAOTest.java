@@ -46,35 +46,46 @@ public class OrderDAOTest {
     @Autowired
     private AddressDAO addressDAO;
     
-    
+    @Autowired
+    private ProductDAO productDAO;
 
     @Test
     public void testSomeMethod() throws ParseException {
         
-        User user = new User();
+        
+        User user = userDAO.findOne("user");
+        
+        System.out.println("User: " + user);
+        
+        Client client = new Client();
+        client.setName("Jan");
+        client.setLastName("Kowalski");
+        
+        client.setUser(user);
+        
+        clientDAO.save(client);
+        
         
         Set<Address> a = new LinkedHashSet<>();
         
         Address address = new Address();
-        address.setId(1L);
         address.setCity("Lublin");
         address.setPostCode("20-542");
         address.setType(Address.AddressType.HOME);
+        address.setStreet("Blotna");
+        address.setClient(client);
+        
+        addressDAO.save(address);
         
         a.add(address);
-        
-        Client client = new Client();
-        client.setId(1L);
-        client.setName("Jan");
-        client.setLastName("Kowalski");
-        client.setAddresses(a);
-        client.setUser(user);
         
         
         
         Product product = new Product();
-        product.setId(1L);
         product.setCategory(null);
+        
+        
+        productDAO.save(product);
         
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = "2013-10-10 10:49:29.10000";
@@ -83,18 +94,16 @@ public class OrderDAOTest {
         Order order = new Order();
         
         OrderItem items = new OrderItem();
-        items.setId(1L);
         items.setOrder(order);
         items.setPrice(new BigDecimal(0.35));
         items.setProduct(product);
         
-        order.setId(1L);
         order.setClient(client);
         order.setOrderDate(newDate);
         
         
         orderDAO.save(order);
         
-        System.out.println(order.getId());
+        System.out.println(orderDAO.findAll());
     }
 }
