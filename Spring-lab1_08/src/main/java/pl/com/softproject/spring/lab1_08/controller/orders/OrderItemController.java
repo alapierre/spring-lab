@@ -68,6 +68,6 @@ public class OrderItemController {
         
         orderItemDAO.save(item);
         
-        return "redirect:orders/item-list";
+        return "redirect:item-list/" + item.getOrder().getId();
     }
 }
