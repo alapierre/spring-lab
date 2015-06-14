@@ -76,17 +76,13 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ModelAndView save(@Valid CustommerDto custommer, BindingResult br) {
+    public String save(@Valid CustommerDto custommer, BindingResult br) {
 
         System.out.println(custommer);
 
         if (br.hasErrors()) {
 
-            System.out.println(br.getAllErrors());
-
-            ModelAndView m = new ModelAndView("edit_client");
-            m.addObject("custommerDto", custommer);
-            return m;
+            return "edit_client";
         }
 
         Client c = new Client();
@@ -108,7 +104,7 @@ public class ClientController {
 
         addressDAO.save(address);
 
-        return new ModelAndView("redirect:list");
+        return "redirect:list";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
