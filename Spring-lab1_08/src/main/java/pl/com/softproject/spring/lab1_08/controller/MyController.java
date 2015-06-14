@@ -16,12 +16,12 @@ import pl.com.softproject.spring.lab1_08.model.Person;
  */
 @Controller
 public class MyController {
-    
+
     protected Logger logger = Logger.getLogger(getClass());
-    
+
     @RequestMapping("/")
     public ModelAndView home() {
-        
+
         logger.debug("MyController.home()");
         
         ModelAndView model = new ModelAndView("home");
@@ -30,7 +30,5 @@ public class MyController {
         
         return model;
     }
-    
-    
-    
+
 }
