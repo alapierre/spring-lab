@@ -11,7 +11,7 @@
 <html>
     <head>
         <%@include file="../jspf/head.jspf" %>
-        <title>Bike Shop :: Lista kategorii</title>
+        <title>Bike Shop :: Dane klienta</title>
     </head>
     
     <body>
@@ -21,21 +21,26 @@
         <div class="container">
 
             <table class="table">
-                <th>Nazwa</th>
-                <th>Kategoria nadrzędna</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
                 <th>*</th>
-                <c:forEach var="category" items="${categories}">
+                <c:forEach var="clients" items="${clients}">
                     <tr>
-                        <td>${category.name}</td>
-                        <td>${category.parent.name}</td>
-                        <td><a href="<c:url value="edit/${category.id}"/>">Edytuj</a> </td>
+                        <td>${clients.name}</td>
+                        <td>${clients.lastName}</td>
+                        <td><a href="<c:url value="/admin/client/edit/${clients.id}"/>">Edytuj</a> </td>
                     </tr>
                 </c:forEach>
             </table>
 
 
 
-        </div><!-- container -->
+        </div>
+        
         <%@include file="../jspf/footer.jspf" %>
+        
     </body>
+    
+    
+    
 </html>

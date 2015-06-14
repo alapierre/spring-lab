@@ -13,7 +13,7 @@ import pl.com.softproject.spring.lab1_08.model.Category;
  *
  * @author Adrian Lapierre <adrian@soft-project.pl>
  */
-public interface CategoryDAO extends CrudRepository<Category, String>{
+public interface CategoryDAO extends CrudRepository<Category, Long>{
     
     public Category findById(Long id);
     

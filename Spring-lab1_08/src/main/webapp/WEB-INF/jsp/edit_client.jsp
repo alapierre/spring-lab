@@ -10,22 +10,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-
+        <%@include file="../jspf/head.jspf" %>
         <title>Starter Template for Bootstrap</title>
-
-        <!-- Bootstrap core CSS -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-
     </head>
-    
+
     <body>
+
+        <%@include file="../jspf/navi.jspf" %>
     
         <div class="container">
 
@@ -35,10 +26,15 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Dodaj klienta</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body">                      
+                        <c:url value="/admin/client/save" var="action"/>
                         
-                        <form:form commandName="client" action="save">
+                        <form:form commandName="custommerDto" action="${action}">
 
+                            <spring:bind path="id">
+                                <form:hidden path="id"/>
+                            </spring:bind>
+                            
                             <spring:bind path="name">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
                                     <label class="control-label" for="name">Imię</label> <form:errors path="name" cssClass="has-error"/>
@@ -76,7 +72,7 @@
                             
                             <br/>
                             <form:button class="btn btn-default">Zapisz</form:button> 
-                            <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = 'list'"/> 
+                            <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = '<c:url value="/admin/client/list"/> '"/> 
                         </form:form>
                     </div>
                 </div>
@@ -84,6 +80,7 @@
             </div>
 
         </div>
-        
+        <!-- /.container -->
+        <%@include file="../jspf/footer.jspf" %>
     </body>
 </html>

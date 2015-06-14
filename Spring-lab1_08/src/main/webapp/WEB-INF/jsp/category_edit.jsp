@@ -10,45 +10,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-
+        <%@include file="../jspf/head.jspf" %>
         <title>Bike Shop :: Dodawanie/Edycja kategorii</title>
-
-        <!-- Bootstrap core CSS -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-
     </head>
 
     <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Bike Shop</a>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
-
-        <br><br><br>
+        <%@include file="../jspf/navi.jspf" %>
 
         <div class="container">
 
@@ -59,8 +27,11 @@
                         <h3 class="panel-title">Dodaj kategorię</h3>
                     </div>
                     <div class="panel-body">
-                        <form:form commandName="category" action="save">
-
+                        
+                        <c:url value="/admin/category/save" var="action"/>
+                        
+                        <form:form commandName="category" action="${action}">
+                            <form:hidden path="id" />
                             <spring:bind path="name">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
                                     <label class="control-label" for="name">Nazwa</label> <form:errors path="name" cssClass="has-error"/>
@@ -71,9 +42,14 @@
                             <spring:bind path="parent.id">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
                                     <label class="control-label" for="parent.id">Kategoria nadrzędna</label> <form:errors path="parent.id" cssClass="has-error"/>
-                                    <form:select class="form-control" path="parent.id" items="${categories}" />
+                                    <form:select  class="form-control" path="parent.id">
+                                        <form:option label="-- wybierz --" value=""/>
+                                        <form:options itemLabel="name" itemValue="id" items="${categories}"/>
+                                    </form:select>
                                 </div>
                             </spring:bind>
+                            
+                            
                             
                             <br/>
                             <form:button class="btn btn-default">Zapisz</form:button> 
@@ -85,14 +61,6 @@
             </div>
 
         </div><!-- /.container -->
-
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+        <%@include file="../jspf/footer.jspf" %>
     </body>
 </html>

@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -22,7 +23,9 @@ public class OrderItem extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
+    @NotNull
     private Integer quantity;
+    @NotNull
     private BigDecimal price;
 
     public Order getOrder() {
