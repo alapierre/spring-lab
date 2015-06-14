@@ -66,4 +66,9 @@ public class CustommerDto {
         this.postCode = postCode;
     }
 
+    @Override
+    public String toString() {
+        return "CustommerDto{" + "name=" + name + ", lastName=" + lastName + ", street=" + street + ", city=" + city + ", postCode=" + postCode + '}';
+    }
+    
 }
