@@ -8,6 +8,7 @@ package pl.com.softproject.spring.lab1_08.controller.admin;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,26 +17,32 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.com.softproject.spring.lab1_08.dao.CategoryDAO;
+import pl.com.softproject.spring.lab1_08.dao.ProductDAO;
 import pl.com.softproject.spring.lab1_08.model.Category;
+import pl.com.softproject.spring.lab1_08.model.Product;
 
 /**
  *
- * @author Agata Kolodynska <agata.kolodynska@gmail.com>
+ * @author Adrian Lapierre <adrian@soft-project.pl>
  */
 @Controller
-@RequestMapping("/admin/category")
-public class CategoryController {
+@RequestMapping("/admin/product")
+public class ProductController {
+    
+    @Autowired
+    private ProductDAO productDAO;
     
     @Autowired
     private CategoryDAO categoryDAO;
     
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ModelAndView add() {
-        
-        ModelAndView model = new ModelAndView("category_edit");
-        model.addObject("category", new Category());	
+
+        ModelAndView model = new ModelAndView("edit_product");
+        model.addObject("product", new Product());
         model.addObject("categories", categoryDAO.findAll());
         
         return model;
@@ -43,42 +50,50 @@ public class CategoryController {
     
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("id") Long id) {
-        
-        ModelAndView model = new ModelAndView("category_edit");
-        model.addObject("category", categoryDAO.findOne(id));
+
+        ModelAndView model = new ModelAndView("edit_product");
+        model.addObject("product", productDAO.findOne(id));
         model.addObject("categories", categoryDAO.findAll());
         
         return model;
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ModelAndView save(@Valid Category category, BindingResult br) {
-        
-        System.out.println(category);
+    public String save(@Valid Product product, BindingResult br) {
+
+        System.out.println(product);
         
         if(br.hasErrors()) {
-            System.out.println(br.getAllErrors());
-            ModelAndView m = new ModelAndView("category_edit");
-            m.addObject("category", category);
-            m.addObject("categories", categoryDAO.findAll());
-            return m;
+            return "edit_product";
         }
+
+        productDAO.save(product);
         
-        if (category.getParent().getId() == 0) {
-            category.setParent(null);
-        }
-        categoryDAO.save(category);
+        return "redirect:list";
+    }
+    
+    
+    @RequestMapping(value = "/display", method = RequestMethod.GET)
+    public ModelAndView display(@RequestParam(value = "name", required = true) String name) {
         
-        return new ModelAndView("redirect:list");
+        //Product product = productDAO.findOneByName(name);
+        
+       //    System.out.println(product);
+        
+        ModelAndView model = new ModelAndView("edit_product");
+        model.addObject("product", new Product());
+        
+        return model;
     }
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
         
-        model.addAttribute("categories", categoryDAO.findAll());
+        model.addAttribute("products", productDAO.findAll());
         
-        return "category_list";
+        return "product_list";
         
     }
+    
     
 }

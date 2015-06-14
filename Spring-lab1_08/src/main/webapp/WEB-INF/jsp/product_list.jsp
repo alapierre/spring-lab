@@ -1,23 +1,16 @@
-<%-- 
-    Document   : edit_user
-    Created on : 2015-06-13, 11:44:22
-    Author     : Adrian Lapierre <adrian@soft-project.pl>
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bike Shop :: Lista pozycji zamówienia</title>
+        <title>Bike Shop :: Dane produktu</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     </head>
-
+    
     <body>
-
+        
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -40,37 +33,26 @@
         </nav>
 
         <br><br><br>
-
+        
         <div class="container">
 
-            <div class="starter-template">
+            <table class="table">
+                <th>Nazwa</th>
+                <th>Kategoria</th>
+                <th>Cena</th>
+                <th>*</th>
+                <c:forEach var="product" items="${products}">
+                    <tr>
+                        <td>${product.name}</td>
+                        <td>${product.category.name}</td>
+                        <td>${product.price} PLN</td>
+                        <td><a href="<c:url value="/admin/product/edit/${product.id}"/>">Edytuj</a> </td>
+                    </tr>
+                </c:forEach>
+            </table>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Lista zamówień</h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                            <th>Klient</th>
-                            <th>Data złożenia</th>
-                            </thead>
-                            <c:forEach var="order" items="${orders}">
-                                <tr>
-                                    <td>${order.client.name}</td>
-                                    <td>
-                                        <fmt:formatDate value="${order.orderDate}" var="orderDate" pattern="yyyy-MM-dd HH:mm:ss" />
-                                        ${orderDate}
-                                    </td>
-                                    <td><a href="<c:url value="/orders/edit/${order.id}"/>">Edytuj</a> </td>
-                                </tr>
-                            </c:forEach>
-                        </table>
-                    </div>
-                </div>
 
-            </div>
 
-        </div><!-- /.container -->
+        </div>
     </body>
 </html>

@@ -31,7 +31,7 @@
                         <c:url value="/admin/category/save" var="action"/>
                         
                         <form:form commandName="category" action="${action}">
-
+                            <form:hidden path="id" />
                             <spring:bind path="name">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
                                     <label class="control-label" for="name">Nazwa</label> <form:errors path="name" cssClass="has-error"/>
@@ -43,7 +43,7 @@
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
                                     <label class="control-label" for="parent.id">Kategoria nadrzędna</label> <form:errors path="parent.id" cssClass="has-error"/>
                                     <form:select  class="form-control" path="parent.id">
-                                        <form:option label="-- wybierz --" value=""/>
+                                        <form:option label="-- wybierz --" value="0" />
                                         <form:options itemLabel="name" itemValue="id" items="${categories}"/>
                                     </form:select>
                                 </div>

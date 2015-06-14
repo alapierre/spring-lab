@@ -15,7 +15,6 @@ import pl.com.softproject.spring.lab1_08.model.Product;
  *
  * @author S108_1
  */
-public interface ProductDAO extends CrudRepository<Product, String>{
+public interface ProductDAO extends CrudRepository<Product, Long>{
     public List<Product> findByNameIgnoreCase(String name);
-    
 }

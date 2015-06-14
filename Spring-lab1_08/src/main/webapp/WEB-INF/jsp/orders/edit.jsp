@@ -57,6 +57,12 @@
                                     <form:select class="form-control" path="client.id" items="${clients}" itemLabel="name" itemValue="id" />
                                 </div>
                             </spring:bind>
+                            <spring:bind path="orderDate">
+                                <div class="control-group form-group ${status.error ? 'has-error' : '' }" >
+                                    <label class="control-label" for="orderDate">Data złożenia <form:errors path="orderDate" cssClass="error-text"/></label> 
+                                    <form:input class="form-control" path="orderDate" placeholder="Podaj datę"/>
+                                </div>
+                            </spring:bind>
 
                             <br/>
                             <form:button class="btn btn-default">Zapisz</form:button> 
