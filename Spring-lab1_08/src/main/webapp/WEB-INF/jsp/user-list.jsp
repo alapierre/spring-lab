@@ -28,7 +28,7 @@
                     <tr>
                         <td>${user.login}</td>
                         <td>${user.active}</td>
-                        <td><a href="<c:url value="/user/add"/>">Edytuj</a> </td>
+                        <td><a href="<c:url value="/admin/user/edit/${user.login}"/>">Edytuj</a> </td>
                     </tr>
                 </c:forEach>
             </table>
