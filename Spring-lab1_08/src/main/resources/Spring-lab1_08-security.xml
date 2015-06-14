@@ -16,7 +16,7 @@
 		
     <security:http>
         <security:intercept-url pattern="/admin/**" access="ROLE_ADMIN" />        
-        <security:form-login />
+        <security:form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?failed"/>
         <security:anonymous />
         <security:http-basic />
         <security:logout />

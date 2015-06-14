@@ -58,12 +58,12 @@
                     </sec:authorize>
                         
                     <sec:authorize access="isAnonymous()">
-                        <form class="navbar-form navbar-right">
+                        <form method="POST" class="navbar-form navbar-right" action="j_spring_security_check">
                             <div class="form-group">
-                                <input type="text" placeholder="Login" class="form-control">
+                                <input name="j_username" type="text" placeholder="Login" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Hasło" class="form-control">
+                                <input name="j_password" type="password" placeholder="Hasło" class="form-control">
                             </div>
                             <button type="submit" class="btn btn-success">Zaloguj</button>
                         </form>
