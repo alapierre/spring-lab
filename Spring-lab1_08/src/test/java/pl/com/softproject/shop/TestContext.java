@@ -126,7 +126,7 @@ public class TestContext {
         s.setNumberPhone("0700747474");
         sellerDAO.save(s);
 
-        List<Seller> result = sellerDAO.findByUserLoginIgnoreCaseLike("Tomek");
+        Seller result = sellerDAO.findByUserLoginIgnoreCaseLike("Tomek");
 
         System.out.println("Wynik: " + result);
     }

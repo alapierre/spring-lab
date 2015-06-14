@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.com.softproject.spring.lab1_08.dao.SellerDAO;
 import pl.com.softproject.spring.lab1_08.dao.UserDAO;
@@ -59,6 +59,7 @@ public class SellerController {
         u.setLogin(seller.getLogin());
         u.setPassword(seller.getPassword());
         u.setActive(true);
+        s.setId(seller.getId());
         s.setUser(u);
         s.setEmail(seller.getEmail());
         s.setNumberPhone(seller.getNumberPhone());
@@ -77,15 +78,24 @@ public class SellerController {
         return "seller-list"; 
     }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public ModelAndView display(@RequestParam(value = "login", required = true) String login) {
+    @RequestMapping(value = "/edit/{login}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable("login") String login) {
+        
+        
+        ModelAndView model = new ModelAndView("edit_seller");
         
         User u = userDAO.findOne(login);
+        Seller s = sellerDAO.findByUserLoginIgnoreCaseLike(login);
         
-        System.out.println(u);
-
-        ModelAndView model = new ModelAndView("edit_seller");
-        model.addObject("seller", new Seller());
+        SellerDto sd = new SellerDto();
+        sd.setId(s.getId());
+        sd.setLogin(u.getLogin());
+        sd.setPassword(u.getPassword());
+        //sd.setActive(true);
+        sd.setEmail(s.getEmail());
+        sd.setNumberPhone(s.getNumberPhone());
+        
+        model.addObject("seller", sd);
         
         return model;
     }

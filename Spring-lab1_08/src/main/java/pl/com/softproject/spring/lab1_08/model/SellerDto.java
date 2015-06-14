@@ -11,11 +11,20 @@ package pl.com.softproject.spring.lab1_08.model;
  */
 public class SellerDto {
     
+    private Long id;
     private String login;
     private String password;
     private boolean active;
     private String email;
     private String numberPhone;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public String getLogin() {
         return login;

@@ -26,8 +26,11 @@
                         <h3 class="panel-title">Dodaj sprzedawce</h3>
                     </div>
                     <div class="panel-body">
-                        <form:form commandName="seller" action="save">
+                        
+                        <c:url value="/admin/seller/save" var="action"/>
 
+                        <form:form commandName="seller" action="${action}">
+                            <form:hidden path="id"/>
                             <spring:bind path="login">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
                                     <label class="control-label" for="login">Login</label> <form:errors path="login" cssClass="has-error"/>
@@ -58,7 +61,7 @@
                             
                             <br/>
                             <form:button class="btn btn-default">Zapisz</form:button> 
-                            <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = 'list'"/> 
+                            <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = '<c:url value="/admin/seller/list"/>'"/> 
                         </form:form>
                     </div>
                 </div>
