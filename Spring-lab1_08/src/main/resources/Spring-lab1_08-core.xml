@@ -30,6 +30,10 @@
     <context:property-placeholder location="classpath:system.properties" />
 
     <jpa:repositories base-package="pl.com.softproject.spring.lab1_08.dao"/>
+    
+    <jdbc:initialize-database ignore-failures="ALL">
+        <jdbc:script location="classpath:security-schema.sql"/>
+    </jdbc:initialize-database>
     	
     <!-- Data source -->
 <!--    <jdbc:embedded-database id="dataSource" type="DERBY">
