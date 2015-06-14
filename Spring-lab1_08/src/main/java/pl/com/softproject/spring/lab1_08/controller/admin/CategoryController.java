@@ -52,17 +52,21 @@ public class CategoryController {
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@Valid Category category, BindingResult br) {
+    public ModelAndView save(@Valid Category category, BindingResult br) {
         
         System.out.println(category);
         
         if(br.hasErrors()) {
-            return "category_edit";
+            System.out.println(br.getAllErrors());
+            ModelAndView m = new ModelAndView("category_edit");
+            m.addObject("category", category);
+            m.addObject("categories", categoryDAO.findAll());
+            return m;
         }
         
         categoryDAO.save(category);
         
-        return "redirect:list";
+        return new ModelAndView("redirect:list");
     }
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)

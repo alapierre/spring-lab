@@ -117,7 +117,7 @@ public class TestContext {
 
         User u = new User();
         u.setLogin("Tomek");
-        u.setPassword("dupa1234");
+        u.setPassword("haslo1234");
         userDAO.save(u);
 
         Seller s = new Seller();
@@ -126,7 +126,7 @@ public class TestContext {
         s.setNumberPhone("0700747474");
         sellerDAO.save(s);
 
-        List<Seller> result = sellerDAO.findByUserLoginIgnoreCaseLike("Tomek");
+        Seller result = sellerDAO.findByUserLoginIgnoreCaseLike("Tomek");
 
         System.out.println("Wynik: " + result);
     }

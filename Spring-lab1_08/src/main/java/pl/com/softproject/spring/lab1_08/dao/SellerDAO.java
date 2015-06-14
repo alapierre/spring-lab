@@ -15,7 +15,7 @@ import pl.com.softproject.spring.lab1_08.model.Seller;
  */
 public interface SellerDAO extends CrudRepository<Seller, String>{
     
-    public List<Seller> findByUserLoginIgnoreCaseLike(String login);
+    public Seller findByUserLoginIgnoreCaseLike(String login);
     public List<Seller> findByEmail(String email);
     public List<Seller> findByNumberPhone(String numberPhone);
     
