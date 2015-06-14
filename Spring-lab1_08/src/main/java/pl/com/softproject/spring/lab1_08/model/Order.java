@@ -70,7 +70,7 @@ public class Order extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Order{" + "orderDate=" + orderDate + ", client=" + client + ", orderItems=" + orderItems + '}';
+        return "Order{" + "orderDate=" + orderDate + ", client=" + client + '}';
     }
 
     

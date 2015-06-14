@@ -60,7 +60,7 @@ public class Client extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Client{" + "name=" + name + ", lastName=" + lastName + ", addresses=" + addresses + ", user=" + user + '}';
+        return "Client{" + "name=" + name + ", lastName=" + lastName + ", user=" + user + '}';
     }
    
     
