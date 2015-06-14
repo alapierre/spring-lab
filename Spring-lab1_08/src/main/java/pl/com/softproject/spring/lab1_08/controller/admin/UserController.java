@@ -38,6 +38,15 @@ public class UserController {
         return model;
     }
     
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable("id") String id) {
+        
+        ModelAndView model = new ModelAndView("edit_user");
+        model.addObject("user", userDAO.findOne(id));
+        
+        return model;
+    }
+    
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@Valid User user, BindingResult br) {
         
@@ -52,19 +61,16 @@ public class UserController {
         return "redirect:list";
     }
     
-    @RequestMapping(value = "/{login}", method = RequestMethod.GET)
-    public ModelAndView display1(@PathVariable(value = "login") String login) {
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String list(Model model) {
         
-        User user = userDAO.findOne(login);
+        model.addAttribute("users", userDAO.findAll());
         
-        System.out.println(user);
-        
-        ModelAndView model = new ModelAndView("edit_user");
-        model.addObject("user", new User());
-        
-        return model;
+        return "user-list";
         
     }
+    
+    // -------------------------------------------
     
     @RequestMapping(value = "/display", method = RequestMethod.GET)
     public ModelAndView display(@RequestParam(value = "login", required = true) String login) {
@@ -78,15 +84,4 @@ public class UserController {
         
         return model;
     }
-    
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model) {
-        
-        model.addAttribute("users", userDAO.findAll());
-        
-        return "user-list";
-        
-    }
-    
-    
 }

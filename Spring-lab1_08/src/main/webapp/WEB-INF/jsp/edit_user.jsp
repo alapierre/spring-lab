@@ -27,7 +27,10 @@
                         <h3 class="panel-title">Dodaj użytkownika</h3>
                     </div>
                     <div class="panel-body">
-                        <form:form commandName="user" action="save">
+                        
+                        <c:url value="/admin/user/save" var="action"/>
+                        
+                        <form:form commandName="user" action="${action}">
 
                             <spring:bind path="login">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
@@ -45,7 +48,7 @@
                             
                             <br/>
                             <form:button class="btn btn-default">Zapisz</form:button> 
-                            <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = 'list'"/> 
+                            <input class="btn btn-warning" type="button" value="Anuluj" onclick="location.href = '<c:url value="/admin/user/list"/> '"/> 
                         </form:form>
                     </div>
                 </div>
