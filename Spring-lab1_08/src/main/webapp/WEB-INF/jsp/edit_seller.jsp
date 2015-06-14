@@ -15,9 +15,7 @@
     </head>
 
     <body>
-
         <%@include file="../jspf/navi.jspf" %>
-
         <div class="container">
                         <div class="starter-template">
 
@@ -65,7 +63,6 @@
                         </form:form>
                     </div>
                 </div>
-
             </div>
         </div>
             <%@include file="../jspf/footer.jspf" %>
