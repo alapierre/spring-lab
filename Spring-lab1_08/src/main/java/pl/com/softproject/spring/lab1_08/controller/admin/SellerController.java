@@ -38,7 +38,7 @@ public class SellerController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ModelAndView add() {
         
-        ModelAndView model = new ModelAndView("add_seller");
+        ModelAndView model = new ModelAndView("edit_seller");
         model.addObject("seller", new SellerDto());
         
         return model;
@@ -50,7 +50,7 @@ public class SellerController {
         System.out.println(seller);
         
         if(br.hasErrors()) {
-            return "add_seller";
+            return "edit_seller";
         }
         
         User u = new User();
@@ -84,7 +84,7 @@ public class SellerController {
         
         System.out.println(u);
 
-        ModelAndView model = new ModelAndView("add_seller");
+        ModelAndView model = new ModelAndView("edit_seller");
         model.addObject("seller", new Seller());
         
         return model;
