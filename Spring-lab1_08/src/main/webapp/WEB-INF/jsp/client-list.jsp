@@ -21,14 +21,14 @@
         <div class="container">
 
             <table class="table">
-                <th>Login</th>
-                <th>Aktywny</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
                 <th>*</th>
                 <c:forEach var="clients" items="${clients}">
                     <tr>
                         <td>${clients.name}</td>
                         <td>${clients.lastName}</td>
-                        <td><a href="<c:url value="-admin/client/add"/>">Edytuj</a> </td>
+                        <td><a href="<c:url value="/admin/client/edit/${clients.id}"/>">Edytuj</a> </td>
                     </tr>
                 </c:forEach>
             </table>
