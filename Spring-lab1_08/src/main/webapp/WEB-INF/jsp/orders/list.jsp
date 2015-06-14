@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,12 +53,15 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                             <th>Klient</th>
-                            <th>Data</th>
+                            <th>Data złożenia</th>
                             </thead>
                             <c:forEach var="order" items="${orders}">
                                 <tr>
                                     <td>${order.client.name}</td>
-                                    <td>${order.orderDate}</td>
+                                    <td>
+                                        <fmt:formatDate value="${order.orderDate}" var="orderDate" pattern="yyyy-MM-dd HH:mm:ss" />
+                                        ${orderDate}
+                                    </td>
                                     <td><a href="<c:url value="/orders/edit/${order.id}"/>">Edytuj</a> </td>
                                 </tr>
                             </c:forEach>
