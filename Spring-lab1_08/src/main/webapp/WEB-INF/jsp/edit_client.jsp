@@ -27,6 +27,7 @@
                         <h3 class="panel-title">Dodaj klienta</h3>
                     </div>
                     <div class="panel-body">
+                        
                         <form:form commandName="client" action="save">
 
                             <spring:bind path="name">

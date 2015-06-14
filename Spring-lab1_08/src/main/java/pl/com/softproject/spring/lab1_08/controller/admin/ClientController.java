@@ -5,8 +5,6 @@
  */
 package pl.com.softproject.spring.lab1_08.controller.admin;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,13 +39,17 @@ public class ClientController {
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@Valid CustommerDto client, BindingResult br) {
+    public ModelAndView save(@Valid CustommerDto client, BindingResult br) {
         
         System.out.println(client);
         
-        
         if(br.hasErrors()) {
-            return "edit_client";
+            
+            System.out.println(br.getAllErrors());
+            
+            ModelAndView m = new ModelAndView("edit_client");
+            m.addObject("client", client);
+            return m;
         }
         
         Client c = new Client();
@@ -66,7 +68,7 @@ public class ClientController {
         
         clientDAO.save(c);
         
-        return "redirect:list";
+        return new ModelAndView("redirect:add");
     }
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
