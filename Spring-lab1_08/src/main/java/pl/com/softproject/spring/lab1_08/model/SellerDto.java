@@ -5,6 +5,10 @@
  */
 package pl.com.softproject.spring.lab1_08.model;
 
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  *
  * @author S108_8
@@ -13,9 +17,16 @@ public class SellerDto {
     
     private Long id;
     private String login;
+    
+    @Size(min = 5, max = 64)
     private String password;
+    
     private boolean active;
+    
+    @Email
     private String email;
+    
+    @NotEmpty
     private String numberPhone;
 
     public void setId(Long id) {

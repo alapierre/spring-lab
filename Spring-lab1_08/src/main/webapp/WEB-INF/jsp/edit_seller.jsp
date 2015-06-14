@@ -27,7 +27,7 @@
                         
                         <c:url value="/admin/seller/save" var="action"/>
 
-                        <form:form commandName="seller" action="${action}">
+                        <form:form commandName="sellerDto" action="${action}">
                             <form:hidden path="id"/>
                             <spring:bind path="login">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">

@@ -39,35 +39,40 @@ public class SellerController {
     public ModelAndView add() {
         
         ModelAndView model = new ModelAndView("edit_seller");
-        model.addObject("seller", new SellerDto());
+        model.addObject("sellerDto", new SellerDto());
         
         return model;
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@Valid SellerDto seller, BindingResult br) {
+    public ModelAndView save(@Valid SellerDto sellerDto, BindingResult br) {
         
-        System.out.println(seller);
+        System.out.println(sellerDto);
         
         if(br.hasErrors()) {
-            return "edit_seller";
+            System.out.println(br.getAllErrors());
+            ModelAndView m = new ModelAndView("edit_seller");
+            m.addObject("sellerDto", sellerDto);
+            m.addObject("errors", br.getAllErrors());
+            //m.addObject("categories", categoryDAO.findAll());
+            return m;
         }
         
         User u = new User();
         Seller s = new Seller();
         
-        u.setLogin(seller.getLogin());
-        u.setPassword(seller.getPassword());
+        u.setLogin(sellerDto.getLogin());
+        u.setPassword(sellerDto.getPassword());
         u.setActive(true);
-        s.setId(seller.getId());
+        s.setId(sellerDto.getId());
         s.setUser(u);
-        s.setEmail(seller.getEmail());
-        s.setNumberPhone(seller.getNumberPhone());
+        s.setEmail(sellerDto.getEmail());
+        s.setNumberPhone(sellerDto.getNumberPhone());
 
         userDAO.save(u);
         sellerDAO.save(s);
 
-        return "redirect:list";
+        return new ModelAndView("redirect:list");
     }
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -91,11 +96,10 @@ public class SellerController {
         sd.setId(s.getId());
         sd.setLogin(u.getLogin());
         sd.setPassword(u.getPassword());
-        //sd.setActive(true);
         sd.setEmail(s.getEmail());
         sd.setNumberPhone(s.getNumberPhone());
         
-        model.addObject("seller", sd);
+        model.addObject("sellerDto", sd);
         
         return model;
     }
