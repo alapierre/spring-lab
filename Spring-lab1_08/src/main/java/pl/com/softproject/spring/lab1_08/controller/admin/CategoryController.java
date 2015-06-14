@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,14 +35,18 @@ public class CategoryController {
     public ModelAndView add() {
         
         ModelAndView model = new ModelAndView("category_edit");
-        model.addObject("category", new Category());
+        model.addObject("category", new Category());	
+        model.addObject("categories", getCategoryNameList());
         
-	Map<Long,String> categories = new LinkedHashMap<Long,String>();
-        categories.put(null, "--Wybierz Kategorię--");
-        for (Category cat : categoryDAO.findAll()) {
-            categories.put(cat.getId(), cat.getName());
-        }
-        model.addObject("categories", categories);
+        return model;
+    }
+    
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable("id") String id) {
+        
+        ModelAndView model = new ModelAndView("category_edit");
+        model.addObject("category", categoryDAO.findOne(id));
+        model.addObject("categories", getCategoryNameList());
         
         return model;
     }
@@ -69,5 +74,13 @@ public class CategoryController {
         
     }
     
-    
+    protected Map<Long,String> getCategoryNameList() {
+        Map<Long,String> categories = new LinkedHashMap<Long,String>();
+        categories.put(null, "-- Wybierz kategorię --");
+        for (Category cat : categoryDAO.findAll()) {
+            categories.put(cat.getId(), cat.getName());
+        }
+        
+        return categories;
+    }
 }
