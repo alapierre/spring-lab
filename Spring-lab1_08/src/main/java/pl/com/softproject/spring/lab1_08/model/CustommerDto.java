@@ -13,6 +13,8 @@ import javax.validation.constraints.Size;
  */
 public class CustommerDto {
 
+    private Long id;
+    
     @Size(min = 2, max = 64)
     private String name;
 
@@ -26,6 +28,14 @@ public class CustommerDto {
     @Size(max = 6)
     private String postCode;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }

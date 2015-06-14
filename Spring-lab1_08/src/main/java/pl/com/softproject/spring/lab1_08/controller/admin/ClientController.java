@@ -39,7 +39,7 @@ public class ClientController {
     public ModelAndView add() {
 
         ModelAndView model = new ModelAndView("edit_client");
-        model.addObject("client", new CustommerDto());
+        model.addObject("custommerDto", new CustommerDto());
 
         return model;
     }
@@ -50,56 +50,62 @@ public class ClientController {
         Client editClient = clientDAO.findOne(id);
 
         Set<Address> ad = editClient.getAddresses();
-        
+
         ModelAndView model = new ModelAndView("edit_client");
 
-
+        CustommerDto cd = new CustommerDto();
+        cd.setId(editClient.getId());
+        cd.setName(editClient.getName());
+        cd.setLastName(editClient.getLastName());
+        
         if (!ad.isEmpty()) {
-            CustommerDto cd = new CustommerDto();
-            cd.setName(editClient.getName());
-            cd.setLastName(editClient.getLastName());
             cd.setStreet(ad.iterator().next().getStreet());
             cd.setCity(ad.iterator().next().getCity());
             cd.setPostCode(ad.iterator().next().getPostCode());
-
-            model.addObject("client", cd);
+            
         } else {
-            model.addObject("client", new CustommerDto());
+            cd.setStreet("");
+            cd.setCity("");
+            cd.setPostCode("");
+        
         }
 
+        model.addObject("custommerDto", cd);
+        
         return model;
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ModelAndView save(@Valid CustommerDto client, BindingResult br) {
+    public ModelAndView save(@Valid CustommerDto custommer, BindingResult br) {
 
-        System.out.println(client);
+        System.out.println(custommer);
 
         if (br.hasErrors()) {
 
             System.out.println(br.getAllErrors());
 
             ModelAndView m = new ModelAndView("edit_client");
-            m.addObject("client", client);
+            m.addObject("custommerDto", custommer);
             return m;
         }
 
         Client c = new Client();
 
         Address address = new Address();
-        address.setCity(client.getCity());
-        address.setPostCode(client.getPostCode());
-        address.setStreet(client.getStreet());
+        address.setCity(custommer.getCity());
+        address.setPostCode(custommer.getPostCode());
+        address.setStreet(custommer.getStreet());
         address.setType(Address.AddressType.HOME);
 
+        c.setId(custommer.getId());
         c.getAddresses().add(address);
-        c.setName(client.getName());
-        c.setLastName(client.getLastName());
+        c.setName(custommer.getName());
+        c.setLastName(custommer.getLastName());
 
         address.setClient(c);
 
         clientDAO.save(c);
-        
+
         addressDAO.save(address);
 
         return new ModelAndView("redirect:list");
