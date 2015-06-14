@@ -32,14 +32,14 @@
     <jpa:repositories base-package="pl.com.softproject.spring.lab1_08.dao"/>
     	
     <!-- Data source -->
-    <jdbc:embedded-database id="dataSource" type="DERBY">
-    </jdbc:embedded-database>
-<!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<!--    <jdbc:embedded-database id="dataSource" type="DERBY">
+    </jdbc:embedded-database>-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}" />
         <property name="url" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
-    </bean>-->
+    </bean>
 
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -50,6 +50,7 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="generateDdl" value="true" />
                 <property name="showSql" value="true"/>
+                <property name="database" value="DERBY"/>
             </bean>
         </property>
         
