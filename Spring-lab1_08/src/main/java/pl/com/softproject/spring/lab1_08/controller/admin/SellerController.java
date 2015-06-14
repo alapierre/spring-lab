@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.com.softproject.spring.lab1_08.dao.SellerDAO;
 import pl.com.softproject.spring.lab1_08.dao.UserDAO;
@@ -73,8 +74,20 @@ public class SellerController {
         
         model.addAttribute("sellers", sellerDAO.findAll());
         
-        return "seller-list";
+        return "seller-list"; 
+    }
+    
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public ModelAndView display(@RequestParam(value = "login", required = true) String login) {
         
+        User u = userDAO.findOne(login);
+        
+        System.out.println(u);
+
+        ModelAndView model = new ModelAndView("add_seller");
+        model.addObject("seller", new Seller());
+        
+        return model;
     }
     
 }
