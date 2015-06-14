@@ -52,6 +52,7 @@
                         <form:form commandName="item" action="${pageContext.request.contextPath}/orders/item-save">
                             <form:hidden path="id" />
                             <form:hidden path="order.id" />
+                            <form:hidden path="product.id" />
                             <spring:bind path="quantity">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }" >
                                     <label class="control-label" for="quantity">Ilość <form:errors path="quantity" cssClass="error-text"/></label> 
