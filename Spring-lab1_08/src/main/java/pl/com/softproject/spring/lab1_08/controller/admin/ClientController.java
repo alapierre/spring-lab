@@ -66,13 +66,13 @@ public class ClientController {
         
         clientDAO.save(c);
         
-        return "redirect:add";
+        return "redirect:list";
     }
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
         
-        model.addAttribute("users", clientDAO.findAll());
+        model.addAttribute("clients", clientDAO.findAll());
         
         return "client-list";
         
