@@ -27,7 +27,10 @@
                         <h3 class="panel-title">Dodaj kategorię</h3>
                     </div>
                     <div class="panel-body">
-                        <form:form commandName="category" action="save">
+                        
+                        <c:url value="/admin/category/save" var="action"/>
+                        
+                        <form:form commandName="category" action="${action}">
 
                             <spring:bind path="name">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
@@ -39,9 +42,14 @@
                             <spring:bind path="parent.id">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
                                     <label class="control-label" for="parent.id">Kategoria nadrzędna</label> <form:errors path="parent.id" cssClass="has-error"/>
-                                    <form:select class="form-control" path="parent.id" items="${categories}" />
+                                    <form:select  class="form-control" path="parent.id">
+                                        <form:option label="-- wybierz --" value=""/>
+                                        <form:options itemLabel="name" itemValue="id" items="${categories}"/>
+                                    </form:select>
                                 </div>
                             </spring:bind>
+                            
+                            
                             
                             <br/>
                             <form:button class="btn btn-default">Zapisz</form:button> 

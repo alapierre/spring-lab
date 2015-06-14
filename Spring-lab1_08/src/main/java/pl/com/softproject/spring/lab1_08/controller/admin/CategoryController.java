@@ -36,17 +36,17 @@ public class CategoryController {
         
         ModelAndView model = new ModelAndView("category_edit");
         model.addObject("category", new Category());	
-        model.addObject("categories", getCategoryNameList());
+        model.addObject("categories", categoryDAO.findAll());
         
         return model;
     }
     
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public ModelAndView edit(@PathVariable("id") String id) {
+    public ModelAndView edit(@PathVariable("id") Long id) {
         
         ModelAndView model = new ModelAndView("category_edit");
         model.addObject("category", categoryDAO.findOne(id));
-        model.addObject("categories", getCategoryNameList());
+        model.addObject("categories", categoryDAO.findAll());
         
         return model;
     }
@@ -74,13 +74,4 @@ public class CategoryController {
         
     }
     
-    protected Map<Long,String> getCategoryNameList() {
-        Map<Long,String> categories = new LinkedHashMap<Long,String>();
-        categories.put(null, "-- Wybierz kategorię --");
-        for (Category cat : categoryDAO.findAll()) {
-            categories.put(cat.getId(), cat.getName());
-        }
-        
-        return categories;
-    }
 }
