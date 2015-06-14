@@ -60,7 +60,7 @@
                                     <td>${item.product.name}</td>
                                     <td>${item.quantity}</td>
                                     <td>${item.price}</td>
-                                    <td><a href="<c:url value="/orders/item-edit/${order.id}/${item.id}"/>">Edytuj</a> </td>
+                                    <td><a href="<c:url value="/orders/item-edit/${item.id}"/>">Edytuj</a> </td>
                                 </tr>
                             </c:forEach>
                         </table>
