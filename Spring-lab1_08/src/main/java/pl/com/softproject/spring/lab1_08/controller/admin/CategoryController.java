@@ -64,6 +64,9 @@ public class CategoryController {
             return m;
         }
         
+        if (category.getParent().getId() == 0) {
+            category.setParent(null);
+        }
         categoryDAO.save(category);
         
         return new ModelAndView("redirect:list");
