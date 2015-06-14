@@ -28,7 +28,9 @@
                     </div>
                     <div class="panel-body">
                         
-                        <form:form commandName="client" action="save">
+                        <c:url value="/admin/client/save" var="action"/>
+                        
+                        <form:form commandName="client" action="${action}">
 
                             <spring:bind path="name">
                                 <div class="control-group form-group ${status.error ? 'has-error' : '' }">
