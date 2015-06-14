@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 @Entity
 public class Category extends BaseEntity{
     
-    @Size(max = 128)
+    @Size(min = 1, max = 128)
     private String name;
     @ManyToOne
     @JoinColumn(name = "parent_id")
