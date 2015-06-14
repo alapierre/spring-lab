@@ -1,5 +1,5 @@
 <%-- 
-    Document   : add_seller
+    Document   : edit_seller
     Created on : 2015-06-13, 11:44:22
     Author     : ja :D
 --%>
