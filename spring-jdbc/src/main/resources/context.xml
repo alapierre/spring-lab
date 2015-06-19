@@ -17,7 +17,7 @@
        <!--</bean>-->
 
        <jdbc:embedded-database id="dataSource" type="DERBY">
-              <!--<jdbc:script location="schema.sql"/>-->
+              <jdbc:script location="schema.sql"/>
               <!--<jdbc:script location="test-data.sql"/>-->
        </jdbc:embedded-database>
 
