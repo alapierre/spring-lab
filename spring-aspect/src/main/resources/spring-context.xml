@@ -13,25 +13,35 @@
     
     <aop:aspectj-autoproxy />
     
+    <bean id="targetBean" class="pl.com.softproject.springtestaltkom.springaspect.TargetBean"></bean>
+    
+    <bean id="targetBean2" class="pl.com.softproject.springtestaltkom.springaspect.TargetBean2"></bean>
+    
     <bean id="aspect" class="pl.com.softproject.springtestaltkom.springaspect.MyAspect">
     </bean>
     
     <bean id="interceptor" class="pl.com.softproject.springtestaltkom.springaspect.MyInterceptor"/>
     
     <aop:config>
+        
 <!--        <aop:aspect ref="aspect">
             <aop:before method="interceptBefore" pointcut="bean(targetBean)" />
         </aop:aspect>-->
+        
         <aop:aspect ref="interceptor">
             <aop:around method="intercept" pointcut="bean(targetBean)"/>
         </aop:aspect>
         
-        <!--aop:aspect ref="interceptor">
+<!--        <aop:aspect ref="interceptor">
             <aop:around method="intercept" pointcut="execution (public * pl.com.softproject.springtestaltkom.springaspect.TargetBean.method2 (..))"/>
-        </aop:aspect-->
+        </aop:aspect>-->
+        
+<!--        <aop:aspect ref="aspect">
+            <aop:around method="interceptBefore" pointcut="execution (public * pl.com.softproject.springtestaltkom.springaspect..*.* (..))"/>
+        </aop:aspect>-->
         
     </aop:config>
 
-    <bean id="targetBean" class="pl.com.softproject.springtestaltkom.springaspect.TargetBean"></bean>
+    
 
 </beans>

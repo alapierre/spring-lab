@@ -3,6 +3,7 @@
  */
 package pl.com.softproject.springtestaltkom.springaspect;
 
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -18,6 +19,8 @@ public class MyInterceptor {
         System.out.println("interceptor przed metodą");
         
         Object[] params = {2}; 
+        
+        System.out.println("oryginal params: " + Arrays.toString(proceedingJoinPoint.getArgs()));
         
         try {
             

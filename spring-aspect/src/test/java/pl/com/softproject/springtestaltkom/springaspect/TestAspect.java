@@ -5,6 +5,7 @@ package pl.com.softproject.springtestaltkom.springaspect;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -16,11 +17,18 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 public class TestAspect extends AbstractJUnit4SpringContextTests {
     
     @Autowired
+    @Qualifier("targetBean")
     NewInterface bean;
+    
+    @Autowired
+    @Qualifier("targetBean2")
+    NewInterface bean2;
     
     @Test
     public void test() {
         bean.someMethod(1);
         bean.method2();
+        
+        bean2.method2();
     }
 }

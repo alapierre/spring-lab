@@ -33,7 +33,7 @@
     <jpa:repositories base-package="pl.com.softproject.spring.lab1_08.dao"/>
     	
     <!-- Data source -->
-    <jdbc:embedded-database id="dataSource" type="DERBY">
+    <jdbc:embedded-database id="dataSource" type="H2">
     </jdbc:embedded-database>
 
     
